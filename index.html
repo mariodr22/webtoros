@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212; /* Fondo oscuro */
+            color: #ffffff; /* Texto blanco */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding-top: 20px;
+        }
+        .calendar {
+            width: 350px;
+            background: #1e1e1e; /* Fondo del calendario oscuro */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .header button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #ffffff; /* Color de los botones */
+        }
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            padding: 10px 0;
+        }
+        .day {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            border-radius: 50%;
+            background: #2e2e2e; /* Fondo de los días */
+            margin: auto;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: #ffffff; /* Color del texto de los días */
+        }
+        .day:hover {
+            background-color: #444444; /* Color de los días al pasar el ratón por encima */
+        }
+        .day.empty {
+            background: none;
+            box-shadow: none;
+        }
+        .event-indicator {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: green;
+            border-radius: 50%;
+        }
+        #eventsList {
+            margin-top: 20px;
+            width: 350px;
+            background: #1e1e1e; /* Fondo de la lista de eventos oscuro */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            text-align: left;
+        }
+        #fullScreenImageContainer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        #fullScreenImage {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        #closeFullScreen {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff4c4c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .event-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .event-item img {
+            margin-right: 10px;
+        }
+        .event-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar">
+            <div class="header">
+                <button onclick="prevMonth()">❮</button>
+                <span id="monthYear"></span>
+                <button onclick="nextMonth()">❯</button>
+            </div>
+            <div class="days" id="days-container"></div>
+        </div>
+        <div id="eventsList"></div>
+    </div>
+    <div id="fullScreenImageContainer">
+        <button id="closeFullScreen">Cerrar</button>
+        <img id="fullScreenImage" src="" alt="Evento en grande">
+    </div>
+
+    <script>
+        const events = [
+            { date: "2025-03-15", place: "VALENCIA", time: "Recortes", extra: "11:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg" },
+            { date: "2025-03-15", place: "Casas de Lázaro (Albacete)", time: "Novillada", extra: "17:00", image: "https://scontent-mad1-1.xx.fbcdn.net/v/t39.30808-6/480494699_602561389311071_7351350269733396675_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=wdDkSGxsOt4Q7kNvgHNKP_k&_nc_oc=AdibxpUagGKENkVFGvc0yIEPgPibhmrBIt4kAbixUsCekdXKjUcF67Sxf0ZMODNijf4&_nc_zt=23&_nc_ht=scontent-mad1-1.xx&_nc_gid=AnFFrpYg_3qV5fGA2q4GMVk&oh=00_AYE1_RKQHSgPLXH3nIs3gwxoc9QUFKrn7kPKjWAOO-xvtw&oe=67D956FA" },
+            { date: "2025-03-15", place: "Villaseca de la Sagra (Toledo)", time: "Corrida de toros", extra: "17:30", image: "https://pbs.twimg.com/media/Gl6Jgz4WgAAsSeH?format=jpg&name=large" },
+            { date: "2025-03-15", place: "VALENCIA", time: "Suelta en la plaza", extra: "22:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg" }
+        ];
+
+        let date = new Date();
+
+        function renderCalendar() {
+            const daysContainer = document.getElementById("days-container");
+            daysContainer.innerHTML = "";
+
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDay = new Date(year, month + 1, 0).getDate();
+            document.getElementById("monthYear").textContent = `${year} - ${date.toLocaleString('default', { month: 'long' })}`;
+
+            // Agregar días vacíos
+            for (let i = 0; i < firstDay; i++) {
+                let emptyElement = document.createElement("div");
+                emptyElement.className = "day empty";
+                daysContainer.appendChild(emptyElement);
+            }
+
+            for (let day = 1; day <= lastDay; day++) {
+                let dayElement = document.createElement("div");
+                dayElement.className = "day";
+                dayElement.textContent = day;
+                let fullDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                dayElement.onclick = () => showEvents(fullDate);
+
+                // Agregar un solo círculo verde si hay eventos
+                const dayEvents = events.filter(event => event.date === fullDate);
+                if (dayEvents.length > 0) {
+                    let eventIndicator = document.createElement("div");
+                    eventIndicator.className = "event-indicator";
+                    dayElement.appendChild(eventIndicator);
+                }
+
+                daysContainer.appendChild(dayElement);
+            }
+        }
+
+        function showEvents(date) {
+            const eventsList = document.getElementById("eventsList");
+            eventsList.innerHTML = ""; // Clear previous events
+
+            const dayEvents = events.filter(event => event.date === date);
+            if (dayEvents.length > 0) {
+                dayEvents.forEach(event => {
+                    const eventItem = document.createElement("div");
+                    eventItem.className = "event-item";
+                    eventItem.innerHTML = `
+                        <img src="${event.image}" alt="Evento" width="50" onclick="openFullScreen('${event.image}')">
+                        <div class="event-details">
+                            <strong>${event.place}</strong>
+                            ${event.time}<br>
+                            ${event.extra}
+                        </div>`;
+                    eventsList.appendChild(eventItem);
+                });
+            }
+        }
+
+        function openFullScreen(imageSrc) {
+            document.getElementById("fullScreenImage").src = imageSrc;
+            document.getElementById("fullScreenImageContainer").style.display = "flex";
+        }
+
+        document.getElementById("closeFullScreen").addEventListener("click", () => {
+            document.getElementById("fullScreenImageContainer").style.display = "none";
+        });
+
+        function prevMonth() {
+            date.setMonth(date.getMonth() - 1);
+            renderCalendar();
+        }
+
+        function nextMonth() {
+            date.setMonth(date.getMonth() + 1);
+            renderCalendar();
+        }
+
+        document.addEventListener("DOMContentLoaded", renderCalendar);
+    </script>
+</body>
+</html>
