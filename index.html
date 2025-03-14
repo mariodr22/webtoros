@@ -124,6 +124,16 @@
             flex-direction: column;
             align-items: flex-start;
         }
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            padding: 10px 0;
+            font-weight: bold;
+        }
+        .weekday {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -133,6 +143,15 @@
                 <button onclick="prevMonth()">❮</button>
                 <span id="monthYear"></span>
                 <button onclick="nextMonth()">❯</button>
+            </div>
+            <div class="weekdays">
+                <div class="weekday">Lun</div>
+                <div class="weekday">Mar</div>
+                <div class="weekday">Mié</div>
+                <div class="weekday">Jue</div>
+                <div class="weekday">Vie</div>
+                <div class="weekday">Sáb</div>
+                <div class="weekday">Dom</div>
             </div>
             <div class="days" id="days-container"></div>
         </div>
@@ -146,11 +165,12 @@
     <script>
         const events = [
             { date: "2025-03-15", place: "VALENCIA", time: "Recortes", extra: "11:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg" },
+            { date: "2025-03-15", place: "Casas de Lázaro (Albacete)", time: "Novillada", extra: "17:00", image: "https://scontent-mad1-1.xx.fbcdn.net/v/t39.30808-6/480494699_602561389311071_7351350269733396675_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=wdDkSGxsOt4Q7kNvgHNKP_k&_nc_oc=AdibxpUagGKENkVFGvc0yIEPgPibhmrBIt4kAbixUsCekdXKjUcF67Sxf0ZMODNijf4&_nc_zt=23&_nc_ht=scontent-mad1-1.xx&_nc_gid=AnFFrpYg_3qV5fGA2q4GMVk&oh=00_AYE1_RKQHSgPLXH3nIs3gwxoc9QUFKrn7kPKjWAOO-xvtw&oe=67D956FA" },
             { date: "2025-03-15", place: "Villaseca de la Sagra (Toledo)", time: "Corrida de toros", extra: "17:30", image: "https://pbs.twimg.com/media/Gl6Jgz4WgAAsSeH?format=jpg&name=large" },
             { date: "2025-03-15", place: "VALENCIA", time: "Suelta en la plaza", extra: "22:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg" }
         ];
-
-        let date = new Date();
+        
+         let date = new Date();
 
         function renderCalendar() {
             const daysContainer = document.getElementById("days-container");
@@ -158,12 +178,17 @@
 
             const year = date.getFullYear();
             const month = date.getMonth();
-            const firstDay = new Date(year, month, 1).getDay();
+            const firstDayOfMonth = new Date(year, month, 1);
+            let firstDayOfWeek = firstDayOfMonth.getDay(); // 0 (domingo) a 6 (sábado)
+
+            // Ajustar para que el lunes sea el primer día de la semana
+            firstDayOfWeek = (firstDayOfWeek === 0) ? 6 : firstDayOfWeek - 1;
+
             const lastDay = new Date(year, month + 1, 0).getDate();
             document.getElementById("monthYear").textContent = `${year} - ${date.toLocaleString('default', { month: 'long' })}`;
 
-            // Agregar días vacíos
-            for (let i = 0; i < firstDay; i++) {
+            // Agregar días vacíos al principio del mes
+            for (let i = 0; i < firstDayOfWeek; i++) {
                 let emptyElement = document.createElement("div");
                 emptyElement.className = "day empty";
                 daysContainer.appendChild(emptyElement);
