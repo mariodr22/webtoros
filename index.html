@@ -9,13 +9,11 @@
             font-family: 'Arial', sans-serif;
             background: #121212; /* Fondo oscuro */
             color: #ffffff; /* Texto blanco */
+            margin: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding-top: 80px; /* Espacio para el header fijo */
-            overflow-y: auto;
-            scroll-behavior: smooth; /* Scroll suave */
+            height: 100vh; /* Ocupa toda la altura de la pantalla */
+            overflow: hidden; /* Evita el scroll general */
         }
         .header { 
             display: flex; 
@@ -29,12 +27,20 @@
             top: 0;
             z-index: 1000;
         }
+        .main-content {
+            flex-grow: 1; /* Ocupa el espacio restante */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centra el contenido verticalmente */
+            padding: 80px 20px 80px 20px; /* Espacio para header y footer */
+            overflow-y: auto; /* Scroll solo para el contenido principal */
+        }
         .calendar-container {
             width: 100%;
             max-width: 400px;
             padding: 20px;
             box-sizing: border-box;
-            margin-top: 20px; /* Separación del header */
         }
         .calendar {
             width: 100%;
@@ -189,25 +195,27 @@
     <div class="header">
         <h1>onetoro</h1>
     </div>
-    <div class="calendar-container">
-        <div class="calendar">
-            <div class="calendar-header">
-                <button onclick="prevMonth()">❮</button>
-                <span id="monthYear"></span>
-                <button onclick="nextMonth()">❯</button>
+    <div class="main-content">
+        <div class="calendar-container">
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button onclick="prevMonth()">❮</button>
+                    <span id="monthYear"></span>
+                    <button onclick="nextMonth()">❯</button>
+                </div>
+                <div class="weekdays">
+                    <div class="weekday">Lun</div>
+                    <div class="weekday">Mar</div>
+                    <div class="weekday">Mié</div>
+                    <div class="weekday">Jue</div>
+                    <div class="weekday">Vie</div>
+                    <div class="weekday">Sáb</div>
+                    <div class="weekday">Dom</div>
+                </div>
+                <div class="days" id="days-container"></div>
             </div>
-            <div class="weekdays">
-                <div class="weekday">Lun</div>
-                <div class="weekday">Mar</div>
-                <div class="weekday">Mié</div>
-                <div class="weekday">Jue</div>
-                <div class="weekday">Vie</div>
-                <div class="weekday">Sáb</div>
-                <div class="weekday">Dom</div>
-            </div>
-            <div class="days" id="days-container"></div>
+            <div id="eventsList"></div>
         </div>
-        <div id="eventsList"></div>
     </div>
     <div id="fullScreenImageContainer">
         <button id="closeFullScreen">Cerrar</button>
