@@ -3,105 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú de App</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+    <title>Onetoro - Eventos</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #121212;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding-top: 20px;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-        }
-        nav {
-            background: #1e1e1e;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-        }
-        .swiper-container {
-            width: 100%;
-            max-width: 900px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .swiper-pagination {
-            position: relative;
-            margin-top: 30px;
-        }
-        .event-card {
-            background: #1e1e1e;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-            text-align: center;
-        }
+        body { font-family: Arial, sans-serif; background-color: #121212; color: white; margin: 0; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #1f1f1f; border-bottom: 2px solid #ffcc00; }
+        .button { border: 2px solid #ffcc00; padding: 8px 15px; background: none; color: #ffcc00; cursor: pointer; border-radius: 20px; font-weight: bold; }
+        .container { padding: 20px; }
+        .event { margin-bottom: 20px; padding: 15px; background: #222; border-radius: 10px; }
+        .event h2 { margin: 0; color: #ffcc00; }
+        .event p { margin: 5px 0; color: #ccc; }
+        .events-list { margin-top: 10px; }
+        .event-item { display: flex; justify-content: space-between; padding: 12px; background: #333; margin: 5px 0; border-radius: 8px; }
+        .menu { position: fixed; bottom: 0; width: 100%; background: #1f1f1f; display: flex; justify-content: space-around; padding: 15px 0; border-top: 2px solid #ffcc00; }
+        .menu button { background: none; border: none; color: white; cursor: pointer; font-size: 14px; font-weight: bold; padding: 10px; border-radius: 10px; transition: 0.3s; }
+        .menu button:hover { background: #ffcc00; color: black; }
     </style>
 </head>
 <body>
-    <nav class="container p-4 text-center">
-        <ul class="flex justify-center space-x-6">
-            <li><a href="https://example.com/inicio" class="text-white text-lg">Inicio</a></li>
-            <li><a href="https://mariodr22.github.io/webtoros/index" class="text-white text-lg">Calendario</a></li>
-            <li><a href="https://example.com/ganaderias" class="text-white text-lg">Ganaderías</a></li>
-            <li><a href="https://example.com/noticias" class="text-white text-lg">Noticias</a></li>
-        </ul>
-    </nav>
-    
-    <div class="swiper-container mt-6">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://www.burladero.tv/u/fotografias/m/2024/9/18/f1280x720-290166_421841_5118.jpg" alt="Imagen 1" class="w-full"></div>
-            <div class="swiper-slide"><img src="https://www.burladero.tv/u/fotografias/m/2024/9/18/f1280x720-290166_421841_5118.jpg" alt="Imagen 2" class="w-full"></div>
-            <div class="swiper-slide"><img src="https://www.burladero.tv/u/fotografias/m/2024/9/18/f1280x720-290166_421841_5118.jpg" alt="Imagen 3" class="w-full"></div>
-        </div>
-        <div class="swiper-pagination"></div>
+    <div class="header">
+        <h1>onetoro</h1>
+        <button class="button">Login</button>
     </div>
-    
-    <div class="container mt-8">
-        <h2 class="text-2xl font-bold text-center mb-6">Eventos Próximos</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="event-card">
-                <h3 class="text-lg font-semibold">Evento 1</h3>
-                <p>Fecha: 20 de Abril</p>
-                <p>Ubicación: Plaza de Toros</p>
-            </div>
-            <div class="event-card">
-                <h3 class="text-lg font-semibold">Evento 2</h3>
-                <p>Fecha: 25 de Abril</p>
-                <p>Ubicación: Recinto Ferial</p>
-            </div>
-            <div class="event-card">
-                <h3 class="text-lg font-semibold">Evento 3</h3>
-                <p>Fecha: 30 de Abril</p>
-                <p>Ubicación: Plaza Central</p>
-            </div>
+    <div class="container">
+        <div class="event">
+            <h2>Feria de Abril</h2>
+            <p>Sevilla</p>
+            <p>Toros de NÚÑEZ DEL CUVILLO</p>
+            <p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p>
+            <p>Domingo - 9 de abril · 18.30 h</p>
+        </div>
+        <h3 style="color: #ffcc00;">Próximos eventos</h3>
+        <div class="events-list">
+            <div class="event-item"><span>09 ABR</span> <span>Plaza de Toros de La Maestranza - 10:00 p. m.</span></div>
+            <div class="event-item"><span>16 ABR</span> <span>Plaza de Toros de La Maestranza - 10:00 p. m.</span></div>
+            <div class="event-item"><span>19 ABR</span> <span>Plaza de Toros de La Maestranza - 10:00 p. m.</span></div>
         </div>
     </div>
-    
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            }
-        });
-    </script>
+    <div class="menu">
+        <button>Video</button>
+        <button>TV Directo</button>
+        <button>Eventos</button>
+        <button>Buscar</button>
+        <button>Ajustes</button>
+    </div>
 </body>
 </html>
