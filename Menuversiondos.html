@@ -10,7 +10,7 @@
             background-color: #121212; 
             color: white; 
             margin: 0;
-            overflow-y: auto; /* Permite hacer scroll */
+            overflow-y: auto; 
         }
         .header { 
             display: flex; 
@@ -31,7 +31,7 @@
         }
         .container { 
             padding: 20px; 
-            padding-bottom: 80px; /* Evita que el contenido sea tapado por el menú */
+            padding-bottom: 80px; 
         }
         
         .event {
@@ -42,6 +42,7 @@
             padding: 15px;
             background: #222;
             border-radius: 10px;
+            position: relative;
         }
         .event-content {
             flex: 1;
@@ -50,7 +51,6 @@
         .event h2 { margin: 0; color: #ffcc00; }
         .event p { margin: 5px 0; color: #ccc; }
         
-        /* Estilos del carrusel */
         .carousel {
             position: relative;
             max-width: 40%;
@@ -68,7 +68,14 @@
             display: block;
         }
 
-        /* Ajustes para móviles */
+        .star {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+
         @media (max-width: 768px) {
             .event {
                 flex-direction: column;
@@ -143,6 +150,7 @@
                 <p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p>
                 <p>Domingo - 9 de abril · 18.30 h</p>
             </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Star_icon-72a7cf.svg/2048px-Star_icon-72a7cf.svg.png" class="star" alt="Evento importante">
         </div>
         <h3 style="color: #ffcc00;">Próximos eventos</h3>
         <div class="events-list">
@@ -152,11 +160,9 @@
         </div>
     </div>
     <div class="menu">
-        <button>Video</button>
-        <button>TV Directo</button>
-        <button>Eventos</button>
-        <button>Buscar</button>
-        <button>Ajustes</button>
+        <button onclick="window.location.href='https://tusitio.com/inicio'">Inicio</button>
+        <button onclick="https://mariodr22.github.io/webtoros/index">Eventos</button>
+        <button onclick="window.location.href='https://tusitio.com/ganaderias'">Ganaderías</button>
     </div>
     <script>
         let index = 0;
