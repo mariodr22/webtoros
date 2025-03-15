@@ -12,25 +12,45 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh;
             margin: 0;
-            padding-top: 20px;
+            padding-top: 80px; /* Espacio para el header fijo */
+            overflow-y: auto;
+            scroll-behavior: smooth; /* Scroll suave */
+        }
+        .header { 
+            display: flex; 
+            justify-content: center; /* Centramos el título */
+            align-items: center; 
+            padding: 15px; 
+            background: #1f1f1f; 
+            border-bottom: 2px solid #ffcc00;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        .calendar-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: 20px; /* Separación del header */
         }
         .calendar {
-            width: 350px;
+            width: 100%;
             background: #1e1e1e; /* Fondo del calendario oscuro */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
             text-align: center;
         }
-        .header {
+        .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
         }
-        .header button {
+        .calendar-header button {
             background: none;
             border: none;
             font-size: 20px;
@@ -77,12 +97,14 @@
         }
         #eventsList {
             margin-top: 20px;
-            width: 350px;
+            width: 100%;
             background: #1e1e1e; /* Fondo de la lista de eventos oscuro */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
             text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
         }
         #fullScreenImageContainer {
             display: none;
@@ -94,6 +116,7 @@
             background: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
+            z-index: 2000;
         }
         #fullScreenImage {
             max-width: 90%;
@@ -134,12 +157,41 @@
         .weekday {
             text-align: center;
         }
+        .menu { 
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+            background: #1f1f1f; 
+            display: flex; 
+            justify-content: space-around; 
+            padding: 15px 0; 
+            border-top: 2px solid #ffcc00; 
+            z-index: 1000;
+        }
+        .menu button { 
+            background: none; 
+            border: none; 
+            color: white; 
+            cursor: pointer; 
+            font-size: 14px; 
+            font-weight: bold; 
+            padding: 10px; 
+            border-radius: 10px; 
+            transition: 0.3s; 
+        }
+        .menu button:hover { 
+            background: #ffcc00; 
+            color: black; 
+        }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>onetoro</h1>
+    </div>
     <div class="calendar-container">
         <div class="calendar">
-            <div class="header">
+            <div class="calendar-header">
                 <button onclick="prevMonth()">❮</button>
                 <span id="monthYear"></span>
                 <button onclick="nextMonth()">❯</button>
@@ -161,7 +213,11 @@
         <button id="closeFullScreen">Cerrar</button>
         <img id="fullScreenImage" src="" alt="Evento en grande">
     </div>
-
+    <div class="menu">
+        <button onclick="window.location.href='https://tusitio.com/inicio'">Inicio</button>
+        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'">Eventos</button>
+        <button onclick="window.location.href='https://tusitio.com/ganaderias'">Ganaderías</button>
+    </div>
     <script>
         const events = [
             { date: "2025-03-15", place: "VALENCIA", time: "Recortes", extra: "11:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg" },
@@ -170,7 +226,7 @@
             { date: "2025-03-15", place: "VALENCIA", time: "Suelta en la plaza", extra: "22:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg" }
         ];
         
-         let date = new Date();
+        let date = new Date();
 
         function renderCalendar() {
             const daysContainer = document.getElementById("days-container");
@@ -215,7 +271,7 @@
 
         function showEvents(date) {
             const eventsList = document.getElementById("eventsList");
-            eventsList.innerHTML = ""; // Clear previous events
+            eventsList.innerHTML = ""; // Limpiar eventos anteriores
 
             const dayEvents = events.filter(event => event.date === date);
             if (dayEvents.length > 0) {
