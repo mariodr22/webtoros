@@ -1,45 +1,66 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onetoro - Eventos</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #121212; color: white; margin: 0; }
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #1f1f1f; border-bottom: 2px solid #ffcc00; }
-        .button { border: 2px solid #ffcc00; padding: 8px 15px; background: none; color: #ffcc00; cursor: pointer; border-radius: 20px; font-weight: bold; }
-        .container { padding: 20px; }
-        
-        /* Ajustes para el evento */
-        .event { 
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #121212; 
+            color: white; 
+            margin: 0;
+            overflow-y: auto; /* Permite hacer scroll */
+        }
+        .header { 
             display: flex; 
+            justify-content: space-between; 
             align-items: center; 
-            gap: 15px; 
-            margin-bottom: 20px; 
             padding: 15px; 
-            background: #222; 
-            border-radius: 10px; 
+            background: #1f1f1f; 
+            border-bottom: 2px solid #ffcc00; 
         }
-        .event-content { 
-            flex: 1; 
-            text-align: left; 
-            font-size: 0.9em; /* Reducido */
-            line-height: 1.2em; /* Espaciado menor */
-            word-wrap: break-word; 
+        .button { 
+            border: 2px solid #ffcc00; 
+            padding: 8px 15px; 
+            background: none; 
+            color: #ffcc00; 
+            cursor: pointer; 
+            border-radius: 20px; 
+            font-weight: bold; 
         }
-        .event h2 { margin: 0; color: #ffcc00; font-size: 1.2em; }
-        .event p { margin: 3px 0; color: #ccc; font-size: 0.85em; }
-
-        /* Ajustes para la imagen del cartel */
+        .container { 
+            padding: 20px; 
+            padding-bottom: 80px; /* Evita que el contenido sea tapado por el menú */
+        }
+        
+        .event {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #222;
+            border-radius: 10px;
+        }
+        .event-content {
+            flex: 1;
+            text-align: left;
+        }
+        .event h2 { margin: 0; color: #ffcc00; }
+        .event p { margin: 5px 0; color: #ccc; }
+        
+        /* Estilos del carrusel */
         .carousel {
-            width: 200px;
-            flex-shrink: 0;
+            position: relative;
+            max-width: 40%;
             overflow: hidden;
             border-radius: 10px;
+            margin-right: 15px;
         }
         .carousel img {
             width: 100%;
-            max-height: 250px;
+            max-height: 300px;
             object-fit: contain;
             display: none;
         }
@@ -47,32 +68,59 @@
             display: block;
         }
 
-        .events-list { margin-top: 10px; }
-        .event-item { display: flex; justify-content: space-between; padding: 12px; background: #333; margin: 5px 0; border-radius: 8px; }
-        .menu { position: fixed; bottom: 0; width: 100%; background: #1f1f1f; display: flex; justify-content: space-around; padding: 15px 0; border-top: 2px solid #ffcc00; }
-        .menu button { background: none; border: none; color: white; cursor: pointer; font-size: 14px; font-weight: bold; padding: 10px; border-radius: 10px; transition: 0.3s; }
-        .menu button:hover { background: #ffcc00; color: black; }
-
-        /* Responsive para móviles */
-        @media (max-width: 600px) {
+        /* Ajustes para móviles */
+        @media (max-width: 768px) {
             .event {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
             }
             .carousel {
-                width: 100%;
-                max-width: 300px;
+                max-width: 90%;
+                margin: 0 auto;
+            }
+            .carousel img {
+                max-height: 200px;
             }
             .event-content {
-                font-size: 0.8em; /* Aún más reducido en móviles */
+                text-align: center;
             }
-            .event h2 {
-                font-size: 1em;
-            }
-            .event p {
-                font-size: 0.75em;
-            }
+        }
+
+        .events-list { margin-top: 10px; }
+        .event-item { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 12px; 
+            background: #333; 
+            margin: 5px 0; 
+            border-radius: 8px; 
+        }
+
+        .menu { 
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+            background: #1f1f1f; 
+            display: flex; 
+            justify-content: space-around; 
+            padding: 15px 0; 
+            border-top: 2px solid #ffcc00; 
+        }
+        .menu button { 
+            background: none; 
+            border: none; 
+            color: white; 
+            cursor: pointer; 
+            font-size: 14px; 
+            font-weight: bold; 
+            padding: 10px; 
+            border-radius: 10px; 
+            transition: 0.3s; 
+        }
+        .menu button:hover { 
+            background: #ffcc00; 
+            color: black; 
         }
     </style>
 </head>
@@ -84,16 +132,16 @@
     <div class="container">
         <div class="event">
             <div class="carousel">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgb1cq5Zij68q2UzV6_wCsDZcdb5gQtJnqFFlsv7_CPsOtfUXPUvP-VBu645khySuqATWDhgtUuftPkGK_OQ3kdbQOChcN5Mio0zT8LJsXovENxEhobF5xzYn6U1xRHh3DowrgdUHlAvvYf/s1600/TRASPINEDO+4+AL+7+JULIO+2019+%2528VALLADOLID%2529.jpg" class="active" alt="Imagen 1">
-                <img src="https://www.bandomovil.com/userFiles/S5/S5ObPIMG-20241023-WA0017.jpg" alt="Imagen 2">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYziD4femlJy7fJyIqWu6cuurTeSPEjFzQlNlSOgxPefQdKKE_kbcYGfpbDP876GTqzLz4HNkGDodxU3DrtvWHRKLm8Pj9sdtFc28cB2fuENpWwDU8p4im55IkLTJ9uuQNXUXl5YnHkWVxPZuP5RrBM3zCcYb0FwiB7m8zVy-IBLA4NKAACnFqgW_Qs-yn/s1024/397352470_651078387145448_1849298171135261110_n.jpg" alt="Imagen 3">
+                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" class="active" alt="Imagen 1">
+                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" alt="Imagen 2">
+                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" alt="Imagen 3">
             </div>
             <div class="event-content" id="event-text">
-                    <h2>Traspinedo</h2>
-                <p>Valladolid</p>
-                <p>Encierro por las calles</p>
+                <h2>Feria de Abril</h2>
+                <p>Sevilla</p>
+                <p>Toros de NÚÑEZ DEL CUVILLO</p>
+                <p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p>
                 <p>Domingo - 9 de abril · 18.30 h</p>
-                <p></p>
             </div>
         </div>
         <h3 style="color: #ffcc00;">Próximos eventos</h3>
@@ -113,7 +161,7 @@
     <script>
         let index = 0;
         const texts = [
-            `<h2>Traspinedo</h2><p>Valladolid</p><p>Encierro por las calles</p><p>Domingo - 9 de abril · 18.30 h</p><p></p>`,
+            `<h2>Feria de Abril</h2><p>Sevilla</p><p>Toros de NÚÑEZ DEL CUVILLO</p><p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p><p>Domingo - 9 de abril · 18.30 h</p>`,
             `<h2>Feria de Valencia</h2><p>Valencia</p><p>Toros de GARCIGRANDE</p><p>MANZANARES, TALAVANTE y ROCA REY</p><p>Viernes - 15 de marzo · 17.30 h</p>`,
             `<h2>Feria de San Isidro</h2><p>Madrid</p><p>Toros de VICTORIANO DEL RÍO</p><p>EL JULI, PERERA y TOMÁS RUFO</p><p>Miércoles - 10 de mayo · 19.00 h</p>`
         ];
