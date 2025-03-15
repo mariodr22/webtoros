@@ -23,11 +23,12 @@
         .event-content { 
             flex: 1; 
             text-align: left; 
-            font-size: 1.1em; 
+            font-size: 0.9em; /* Reducido */
+            line-height: 1.2em; /* Espaciado menor */
             word-wrap: break-word; 
         }
-        .event h2 { margin: 0; color: #ffcc00; font-size: 1.4em; }
-        .event p { margin: 5px 0; color: #ccc; font-size: 1em; }
+        .event h2 { margin: 0; color: #ffcc00; font-size: 1.2em; }
+        .event p { margin: 3px 0; color: #ccc; font-size: 0.85em; }
 
         /* Ajustes para la imagen del cartel */
         .carousel {
@@ -64,7 +65,13 @@
                 max-width: 300px;
             }
             .event-content {
-                text-align: center;
+                font-size: 0.8em; /* Aún más reducido en móviles */
+            }
+            .event h2 {
+                font-size: 1em;
+            }
+            .event p {
+                font-size: 0.75em;
             }
         }
     </style>
@@ -78,13 +85,13 @@
         <div class="event">
             <div class="carousel">
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgb1cq5Zij68q2UzV6_wCsDZcdb5gQtJnqFFlsv7_CPsOtfUXPUvP-VBu645khySuqATWDhgtUuftPkGK_OQ3kdbQOChcN5Mio0zT8LJsXovENxEhobF5xzYn6U1xRHh3DowrgdUHlAvvYf/s1600/TRASPINEDO+4+AL+7+JULIO+2019+%2528VALLADOLID%2529.jpg" class="active" alt="Imagen 1">
-                <img src="imagen2.jpg" alt="Imagen 2">
-                <img src="imagen3.jpg" alt="Imagen 3">
+                <img src="https://www.bandomovil.com/userFiles/S5/S5ObPIMG-20241023-WA0017.jpg" alt="Imagen 2">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYziD4femlJy7fJyIqWu6cuurTeSPEjFzQlNlSOgxPefQdKKE_kbcYGfpbDP876GTqzLz4HNkGDodxU3DrtvWHRKLm8Pj9sdtFc28cB2fuENpWwDU8p4im55IkLTJ9uuQNXUXl5YnHkWVxPZuP5RrBM3zCcYb0FwiB7m8zVy-IBLA4NKAACnFqgW_Qs-yn/s1024/397352470_651078387145448_1849298171135261110_n.jpg" alt="Imagen 3">
             </div>
             <div class="event-content" id="event-text">
-                <h2>Traspinedo</h2>
+                    <h2>Traspinedo</h2>
                 <p>Valladolid</p>
-                <p>Encierro por la calle</p>
+                <p>Encierro por las calles</p>
                 <p>Domingo - 9 de abril · 18.30 h</p>
                 <p></p>
             </div>
@@ -106,7 +113,7 @@
     <script>
         let index = 0;
         const texts = [
-            `<h2>Traspinedo</h2><p>Valladolid</p><p>Encierro por la calle</p><p>Domingo - 9 de abril · 18.30 h</p><p></p>`,
+            `<h2>Traspinedo</h2><p>Valladolid</p><p>Encierro por las calles</p><p>Domingo - 9 de abril · 18.30 h</p><p></p>`,
             `<h2>Feria de Valencia</h2><p>Valencia</p><p>Toros de GARCIGRANDE</p><p>MANZANARES, TALAVANTE y ROCA REY</p><p>Viernes - 15 de marzo · 17.30 h</p>`,
             `<h2>Feria de San Isidro</h2><p>Madrid</p><p>Toros de VICTORIANO DEL RÍO</p><p>EL JULI, PERERA y TOMÁS RUFO</p><p>Miércoles - 10 de mayo · 19.00 h</p>`
         ];
