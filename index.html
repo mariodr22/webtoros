@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario</title>
     <style>
+        /* Estilos generales */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background: #121212; /* Fondo oscuro */
             color: #ffffff; /* Texto blanco */
             margin: 0;
@@ -15,6 +16,8 @@
             height: 100vh; /* Ocupa toda la altura de la pantalla */
             overflow: hidden; /* Evita el scroll general */
         }
+
+        /* Header */
         .header { 
             display: flex; 
             justify-content: center; /* Centramos el título */
@@ -26,7 +29,16 @@
             position: fixed;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00;
+            margin: 0;
+        }
+
+        /* Contenido principal */
         .main-content {
             flex-grow: 1; /* Ocupa el espacio restante */
             display: flex;
@@ -36,6 +48,8 @@
             padding: 80px 20px 80px 20px; /* Espacio para header y footer */
             overflow-y: auto; /* Scroll solo para el contenido principal */
         }
+
+        /* Calendario */
         .calendar-container {
             width: 100%;
             max-width: 400px;
@@ -46,8 +60,8 @@
             width: 100%;
             background: #1e1e1e; /* Fondo del calendario oscuro */
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
         .calendar-header {
@@ -59,9 +73,18 @@
         .calendar-header button {
             background: none;
             border: none;
-            font-size: 20px;
+            font-size: 24px;
             cursor: pointer;
-            color: #ffffff; /* Color de los botones */
+            color: #ffcc00; /* Color de los botones */
+            transition: transform 0.2s ease;
+        }
+        .calendar-header button:hover {
+            transform: scale(1.1);
+        }
+        .calendar-header span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
         }
         .days {
             display: grid;
@@ -71,8 +94,8 @@
         }
         .day {
             position: relative;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -81,88 +104,72 @@
             background: #2e2e2e; /* Fondo de los días */
             margin: auto;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             color: #ffffff; /* Color del texto de los días */
         }
         .day:hover {
             background-color: #444444; /* Color de los días al pasar el ratón por encima */
+            transform: scale(1.1);
         }
         .day.empty {
             background: none;
             box-shadow: none;
+            cursor: default;
         }
         .event-indicator {
             position: absolute;
             bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
-            width: 10px;
-            height: 10px;
-            background: green;
+            width: 8px;
+            height: 8px;
+            background: #4caf50; /* Verde para indicar eventos */
             border-radius: 50%;
         }
+
+        /* Lista de eventos */
         #eventsList {
             margin-top: 20px;
             width: 100%;
             background: #1e1e1e; /* Fondo de la lista de eventos oscuro */
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             text-align: left;
             max-height: 300px;
             overflow-y: auto;
         }
-        #fullScreenImageContainer {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-        #fullScreenImage {
-            max-width: 90%;
-            max-height: 90%;
-        }
-        #closeFullScreen {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #ff4c4c;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
         .event-item {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .event-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
             margin-right: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .event-item img:hover {
+            transform: scale(1.1);
         }
         .event-details {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
-        .weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-            padding: 10px 0;
-            font-weight: bold;
+        .event-details strong {
+            font-size: 16px;
+            color: #ffcc00;
         }
-        .weekday {
-            text-align: center;
+        .event-details span {
+            font-size: 14px;
+            color: #cccccc;
         }
+
+        /* Menú inferior */
         .menu { 
             position: fixed; 
             bottom: 0; 
@@ -173,6 +180,7 @@
             padding: 15px 0; 
             border-top: 2px solid #ffcc00; 
             z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
         }
         .menu button { 
             background: none; 
@@ -188,6 +196,41 @@
         .menu button:hover { 
             background: #ffcc00; 
             color: black; 
+        }
+
+        /* Imagen a pantalla completa */
+        #fullScreenImageContainer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        #fullScreenImage {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        #closeFullScreen {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff4c4c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        #closeFullScreen:hover {
+            background: #ff3333;
         }
     </style>
 </head>
@@ -290,8 +333,7 @@
                         <img src="${event.image}" alt="Evento" width="50" onclick="openFullScreen('${event.image}')">
                         <div class="event-details">
                             <strong>${event.place}</strong>
-                            ${event.time}<br>
-                            ${event.extra}
+                            <span>${event.time} - ${event.extra}</span>
                         </div>`;
                     eventsList.appendChild(eventItem);
                 });
