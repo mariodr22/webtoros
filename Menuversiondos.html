@@ -42,7 +42,7 @@
     </div>
     <div class="container">
         <div class="event">
-            <div class="event-content">
+            <div class="event-content" id="event-text">
                 <h2>Feria de Abril</h2>
                 <p>Sevilla</p>
                 <p>Toros de NÚÑEZ DEL CUVILLO</p>
@@ -50,9 +50,9 @@
                 <p>Domingo - 9 de abril · 18.30 h</p>
             </div>
             <div class="carousel">
-                <img src="https://s1.elespanol.com/2023/10/30/castilla-y-leon/region/valladolid/805929517_237198181_1280x1706.jpg" class="active" alt="Imagen 1">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhIXFyZkYIZjSmiP2e6j-4jwLg-TBhpaJ-X1bFA5ZtmuOSJUszK-w5dPeq-7YrpxqZfITXKM5pZoXjnST4CCoN4f3PbLIeupLlrVJ4UjYT6L4VafJRsDO-CwOqaBtxqCnq6GkLgwRnzlmy5EV_soVq8Eoig6_yOPZB_NRru8V9kg5lleIF16svMWCsKUAgB/s667/482269266_1109900514270709_8239063299063122075_n%20(1).jpg" alt="Imagen 2">
-                <img src="https://www.latribunadeguadalajara.es/media/IMG/2024/FB5390AD-B64E-3BD8-3982B6E681395123.JPG" alt="Imagen 3">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_d0FwPWzzn1f2eM-xCpJP8dktIJhRm6gK4cN7zFtJt5vZbqd3CgeT5FJeFxyglCOI1ASGqBAQkNkdvr6UTTOAyRm6XpTq5rorSZ0gv6eHBBxcTA0oigBsS-hlkLM_magDKWjEV68Pq9bHiFVPhzz_tW3ID_gHKpwMwJ2Y4mSvNwIZ4Zwjb4J5aMzIlt7m/s720/448389606_778696421050310_6640677421482647250_n.jpg" class="active" alt="Imagen 1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXJe7vryUdBjMM7Y912olE82L0WzBFi5qMcd5piSkUqG48uzgcLS42dga0uo_r7RXIVGMsrM2zCO_80-mwEUU6NyR-Qx49qfhKdYhERUgu0_g610nRPDCfKTsuibl5l_A-VgC_TTscdytf/s1600/image.jpg" alt="Imagen 2">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9TET9VwiS2xvV8anmhepHUwp6PuqLy0qDFQIsB-gsEczgNk1HBGcB4eDORV6ZZ6JLSccv-PRLA1yztrZtdi22i5oB7kpCeJG_43Tx-82kK8etcdTp8ATu-9-6NP3rddisp9VIG-bDHuq8/s1600/Cartel+Toros.jpg" alt="Imagen 3">
             </div>
         </div>
         <h3 style="color: #ffcc00;">Próximos eventos</h3>
@@ -71,11 +71,18 @@
     </div>
     <script>
         let index = 0;
+        const texts = [
+            `<h2>Traspinedo</h2><p>Valladolid</p><p>Encierro por las calles</p><p>Domingo 16 de marzo · 17:00 h</p>`,
+            `<h2>Feria de Valencia</h2><p>Valencia</p><p>Toros de GARCIGRANDE</p><p>MANZANARES, TALAVANTE y ROCA REY</p><p>Viernes - 15 de marzo · 17.30 h</p>`,
+            `<h2>Feria de San Isidro</h2><p>Madrid</p><p>Toros de VICTORIANO DEL RÍO</p><p>EL JULI, PERERA y TOMÁS RUFO</p><p>Miércoles - 10 de mayo · 19.00 h</p>`
+        ];
         function showNextImage() {
             let images = document.querySelectorAll(".carousel img");
+            let eventText = document.getElementById("event-text");
             images[index].classList.remove("active");
             index = (index + 1) % images.length;
             images[index].classList.add("active");
+            eventText.innerHTML = texts[index];
         }
         setInterval(showNextImage, 3000);
     </script>
