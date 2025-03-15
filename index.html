@@ -10,7 +10,7 @@
             background-color: #121212; 
             color: white; 
             margin: 0;
-            overflow-y: auto; 
+            overflow-x: hidden; /* Evita el scroll horizontal */
         }
         .header { 
             display: flex; 
@@ -35,6 +35,8 @@
             display: flex;
             flex-direction: column;
             align-items: center; /* Centra todo el contenido horizontalmente */
+            width: 100%; /* Ocupa todo el ancho disponible */
+            box-sizing: border-box; /* Evita desbordamiento por padding */
         }
 
         .menu { 
@@ -65,13 +67,15 @@
 
         /* Estilos del calendario */
         .calendar {
-            width: 350px;
+            width: 100%; /* Ocupa todo el ancho disponible */
+            max-width: 400px; /* Limita el ancho máximo para no estirarse demasiado */
             background: #1e1e1e; /* Fondo del calendario oscuro */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
             text-align: center;
-            margin: 20px auto;
+            margin: 20px 0; /* Espacio arriba y abajo */
+            box-sizing: border-box; /* Evita desbordamiento por padding */
         }
         .calendar .header {
             display: flex;
@@ -94,12 +98,12 @@
         }
         .calendar .day {
             position: relative;
-            width: 45px;
-            height: 45px;
+            width: 40px; /* Tamaño más pequeño para móviles */
+            height: 40px; /* Tamaño más pequeño para móviles */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 16px;
+            font-size: 14px; /* Tamaño de fuente más pequeño */
             border-radius: 50%;
             background: #2e2e2e; /* Fondo de los días */
             margin: auto;
@@ -119,19 +123,21 @@
             bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
-            width: 10px;
-            height: 10px;
+            width: 8px; /* Tamaño más pequeño para móviles */
+            height: 8px; /* Tamaño más pequeño para móviles */
             background: green;
             border-radius: 50%;
         }
         #eventsList {
-            width: 350px; /* Mismo ancho que el calendario */
+            width: 100%; /* Ocupa todo el ancho disponible */
+            max-width: 400px; /* Limita el ancho máximo para no estirarse demasiado */
             background: #1e1e1e; /* Fondo de la lista de eventos oscuro */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
             text-align: left;
             margin-top: 20px; /* Espacio entre el calendario y la lista de eventos */
+            box-sizing: border-box; /* Evita desbordamiento por padding */
         }
         #fullScreenImageContainer {
             display: none;
@@ -166,7 +172,10 @@
             margin-bottom: 10px;
         }
         .event-item img {
+            width: 50px; /* Tamaño fijo para las imágenes */
+            height: 50px; /* Tamaño fijo para las imágenes */
             margin-right: 10px;
+            border-radius: 8px; /* Bordes redondeados */
         }
         .event-details {
             display: flex;
@@ -182,6 +191,7 @@
         }
         .weekday {
             text-align: center;
+            font-size: 14px; /* Tamaño de fuente más pequeño */
         }
     </style>
 </head>
@@ -214,7 +224,7 @@
     </div>
 
     <div class="menu">
-        <button onclick="window.location.href='https://tusitio.com/inicio'">Inicio</button>
+        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/Menuversiondos'">Inicio</button>
         <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'">Eventos</button>
         <button onclick="window.location.href='https://tusitio.com/ganaderias'">Ganaderías</button>
     </div>
