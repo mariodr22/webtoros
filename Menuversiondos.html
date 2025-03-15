@@ -9,9 +9,25 @@
         .header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #1f1f1f; border-bottom: 2px solid #ffcc00; }
         .button { border: 2px solid #ffcc00; padding: 8px 15px; background: none; color: #ffcc00; cursor: pointer; border-radius: 20px; font-weight: bold; }
         .container { padding: 20px; }
-        .event { margin-bottom: 20px; padding: 15px; background: #222; border-radius: 10px; }
+        .event { display: flex; align-items: center; margin-bottom: 20px; padding: 15px; background: #222; border-radius: 10px; }
+        .event-content { flex: 1; text-align: left; }
         .event h2 { margin: 0; color: #ffcc00; }
         .event p { margin: 5px 0; color: #ccc; }
+        .carousel {
+            position: relative;
+            max-width: 50%;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .carousel img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
         .events-list { margin-top: 10px; }
         .event-item { display: flex; justify-content: space-between; padding: 12px; background: #333; margin: 5px 0; border-radius: 8px; }
         .menu { position: fixed; bottom: 0; width: 100%; background: #1f1f1f; display: flex; justify-content: space-around; padding: 15px 0; border-top: 2px solid #ffcc00; }
@@ -26,11 +42,18 @@
     </div>
     <div class="container">
         <div class="event">
-            <h2>Feria de Abril</h2>
-            <p>Sevilla</p>
-            <p>Toros de NÚÑEZ DEL CUVILLO</p>
-            <p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p>
-            <p>Domingo - 9 de abril · 18.30 h</p>
+            <div class="event-content">
+                <h2>Feria de Abril</h2>
+                <p>Sevilla</p>
+                <p>Toros de NÚÑEZ DEL CUVILLO</p>
+                <p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p>
+                <p>Domingo - 9 de abril · 18.30 h</p>
+            </div>
+            <div class="carousel">
+                <img src="https://s1.elespanol.com/2023/10/30/castilla-y-leon/region/valladolid/805929517_237198181_1280x1706.jpg" class="active" alt="Imagen 1">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhIXFyZkYIZjSmiP2e6j-4jwLg-TBhpaJ-X1bFA5ZtmuOSJUszK-w5dPeq-7YrpxqZfITXKM5pZoXjnST4CCoN4f3PbLIeupLlrVJ4UjYT6L4VafJRsDO-CwOqaBtxqCnq6GkLgwRnzlmy5EV_soVq8Eoig6_yOPZB_NRru8V9kg5lleIF16svMWCsKUAgB/s667/482269266_1109900514270709_8239063299063122075_n%20(1).jpg" alt="Imagen 2">
+                <img src="https://www.latribunadeguadalajara.es/media/IMG/2024/FB5390AD-B64E-3BD8-3982B6E681395123.JPG" alt="Imagen 3">
+            </div>
         </div>
         <h3 style="color: #ffcc00;">Próximos eventos</h3>
         <div class="events-list">
@@ -46,5 +69,15 @@
         <button>Buscar</button>
         <button>Ajustes</button>
     </div>
+    <script>
+        let index = 0;
+        function showNextImage() {
+            let images = document.querySelectorAll(".carousel img");
+            images[index].classList.remove("active");
+            index = (index + 1) % images.length;
+            images[index].classList.add("active");
+        }
+        setInterval(showNextImage, 3000);
+    </script>
 </body>
 </html>
