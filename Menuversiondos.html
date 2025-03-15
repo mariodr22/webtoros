@@ -160,25 +160,27 @@
         </div>
     </div>
     <div class="menu">
-        <button onclick="window.location.href='https://tusitio.com/inicio'">Inicio</button>
-        <button onclick="https://mariodr22.github.io/webtoros/index">Eventos</button>
-        <button onclick="window.location.href='https://tusitio.com/ganaderias'">Ganaderías</button>
+    <button onclick="window.location.href='https://tusitio.com/inicio'">Inicio</button>
+    <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'">Eventos</button>
+    <button onclick="window.location.href='https://tusitio.com/ganaderias'">Ganaderías</button>
     </div>
     <script>
         let index = 0;
         const texts = [
-            <h2>Feria de Abril</h2><p>Sevilla</p><p>Toros de NÚÑEZ DEL CUVILLO</p><p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p><p>Domingo - 9 de abril · 18.30 h</p>,
-            <h2>Feria de Valencia</h2><p>Valencia</p><p>Toros de GARCIGRANDE</p><p>MANZANARES, TALAVANTE y ROCA REY</p><p>Viernes - 15 de marzo · 17.30 h</p>,
-            <h2>Feria de San Isidro</h2><p>Madrid</p><p>Toros de VICTORIANO DEL RÍO</p><p>EL JULI, PERERA y TOMÁS RUFO</p><p>Miércoles - 10 de mayo · 19.00 h</p>
+            "<h2>Feria de Abril</h2><p>Sevilla</p><p>Toros de NÚÑEZ DEL CUVILLO</p><p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p><p>Domingo - 9 de abril · 18.30 h</p>",
+            "<h2>Feria de Valencia</h2><p>Valencia</p><p>Toros de GARCIGRANDE</p><p>MANZANARES, TALAVANTE y ROCA REY</p><p>Viernes - 15 de marzo · 17.30 h</p>",
+            "<h2>Feria de San Isidro</h2><p>Madrid</p><p>Toros de VICTORIANO DEL RÍO</p><p>EL JULI, PERERA y TOMÁS RUFO</p><p>Miércoles - 10 de mayo · 19.00 h</p>"
         ];
+
         function showNextImage() {
             let images = document.querySelectorAll(".carousel img");
             let eventText = document.getElementById("event-text");
             images[index].classList.remove("active");
             index = (index + 1) % images.length;
             images[index].classList.add("active");
-            eventText.innerHTML = texts[index];
+            eventText.innerHTML = texts[index]; // Aquí ahora se utilizan cadenas seguras
         }
+
         setInterval(showNextImage, 3000);
     </script>
 </body>
