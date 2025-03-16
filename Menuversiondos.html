@@ -89,34 +89,18 @@
                 text-align: center;
             }
         }
-        .events-list { 
-            margin-top: 10px; 
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* Espacio entre eventos */
+        .events-list { margin-top: 10px; }
+        .event-item { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 12px; 
+            background: #333; 
+            margin: 5px 0; 
+            border-radius: 8px; 
         }
-        .event-item {
-            display: grid;
-            grid-template-columns: 80px 1fr 2fr 80px; /* Ajusta el ancho de las columnas */
-            align-items: center;
-            padding: 12px;
-            background: #333;
-            border-radius: 8px;
-            gap: 10px; /* Espacio entre columnas */
-        }
-        .event-day {
-            font-weight: bold;
-            color: #f5a51a;
-        }
-        .event-location {
-            color: #ccc;
-        }
-        .event-description {
-            color: #ccc;
-        }
-        .event-time {
-            text-align: right;
-            color: #ccc;
+        .event-date {
+            color: #f5a51a; /* Cambia el color de las fechas */
+            font-weight: bold; /* Añade negrita */
         }
         .menu { 
             position: fixed; 
@@ -164,28 +148,13 @@
                 <p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p>
                 <p>Domingo - 9 de abril · 18.30 h</p>
             </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Star_icon-72a7cf.svg/2048px-Star_icon-72a7cf.svg.png" class="star" alt="Evento importante">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqCWCADEq0gkCUtCSOZ45h_O7r3FgdYjL2Wm2vuz5GXhEhXaNt_mZrVMqs7HjrVMOZFQZT0WzPJaxRIjoVYj_ky0oct2xj434UYgZBlSLLqOKraoIq_hi_wuuXfB82_fa8QTH9wtR6Q07bBvaziOnORdc5oAG3KwS26pPbNxdmL22Ivr41XfeAE-FV0EU/s320/Estrella_amarilla%20(1).png" class="star" alt="Evento importante">
         </div>
         <h3 style="color: #f5a51a;">Próximos eventos</h3>
         <div class="events-list">
-            <div class="event-item">
-                <span class="event-day">06 JUL</span>
-                <span class="event-location">Traspinedo (Valladolid)</span>
-                <span class="event-description">Encierro por las calles</span>
-                <span class="event-time">10:00</span>
-            </div>
-            <div class="event-item">
-                <span class="event-day">16 ABR</span>
-                <span class="event-location">Plaza de Toros de La Maestranza</span>
-                <span class="event-description">Corrida de toros</span>
-                <span class="event-time">10:00 p. m.</span>
-            </div>
-            <div class="event-item">
-                <span class="event-day">19 ABR</span>
-                <span class="event-location">Plaza de Toros de La Maestranza</span>
-                <span class="event-description">Corrida de toros</span>
-                <span class="event-time">10:00 p. m.</span>
-            </div>
+            <div class="event-item"><span class="event-date">16 MAR</span> <span>Valencia - Rejones - 12:00</span></div>
+            <div class="event-item"><span class="event-date">16 MAR</span> <span>Valencia - Corrida de toros - 17:00</span></div>
+            <div class="event-item"><span class="event-date">17 MAR</span> <span>Valencia - Corrida de toros - 17:00</span></div>
         </div>
     </main>
     <footer class="menu">
