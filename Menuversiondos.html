@@ -127,6 +127,23 @@
             background: #f5a51a; 
             color: black; 
         }
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .carousel-indicators span {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .carousel-indicators span.active {
+            background-color: #f5a51a;
+        }
     </style>
 </head>
 <body>
@@ -137,18 +154,23 @@
     <main class="container">
         <div class="event">
             <div class="carousel">
-                <img src="https://www.bandomovil.com/userFiles/dU/dUHeaIMG_0155.jpg" class="active" alt="Feria de Abril en Sevilla">
-                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" alt="Feria de Valencia">
-                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" alt="Feria de San Isidro en Madrid">
+                <img src="https://www.servitoro.com/15341/entradas-toros-valencia-fallas-festejo-6.jpg">
+                <img src="https://www.servitoro.com/15337-home_default/entradas-toros-valencia-fallas-festejo-6.jpg">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicjSKJ39fCLP5jcOwPtx756oNRtSAt-xiaEj2V1NrekaoQn0r1mAp_nOO6n8Cc1z5WbMpr9EAGN9ba-_9Iyrl0YVbCqwt8YrAd54ix9F7Y7HFo-79su-r-FkTqIwfL4g8X7dFNT175BHkODpaobkEXDqtPjm5OBfaj_KyGztY3XPlX8iQ_MXnaraaTHIu8/s1687/483370623_1111266624134098_1347232739816392905_n.jpg">
             </div>
             <div class="event-content" id="event-text">
-                <h2>Feria de Abril</h2>
-                <p>Sevilla</p>
-                <p>Toros de NÚÑEZ DEL CUVILLO</p>
-                <p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p>
-                <p>Domingo - 9 de abril · 18.30 h</p>
+                <h2>VALENCIA</h2>
+                <p>16 MAR - 12:00</p>
+                <p>Rejones</p>
+                <p></p>
+                <p></p>
             </div>
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqCWCADEq0gkCUtCSOZ45h_O7r3FgdYjL2Wm2vuz5GXhEhXaNt_mZrVMqs7HjrVMOZFQZT0WzPJaxRIjoVYj_ky0oct2xj434UYgZBlSLLqOKraoIq_hi_wuuXfB82_fa8QTH9wtR6Q07bBvaziOnORdc5oAG3KwS26pPbNxdmL22Ivr41XfeAE-FV0EU/s320/Estrella_amarilla%20(1).png" class="star" alt="Evento importante">
+        </div>
+        <div class="carousel-indicators" id="carousel-indicators">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
         </div>
         <h3 style="color: #f5a51a;">Próximos eventos</h3>
         <div class="events-list">
@@ -165,17 +187,23 @@
     <script>
         let index = 0;
         const texts = [
-            "<h2>Traspinedo</h2><p>Valladolid</p><p>Encierro por las calles</p><p>Domingo - 9 de abril · 18.30 h</p><p></p>",
-            "<h2>Feria de Valencia</h2><p>Valencia</p><p>Toros de GARCIGRANDE</p><p>MANZANARES, TALAVANTE y ROCA REY</p><p>Viernes - 15 de marzo · 17.30 h</p>",
-            "<h2>Feria de San Isidro</h2><p>Madrid</p><p>Toros de VICTORIANO DEL RÍO</p><p>EL JULI, PERERA y TOMÁS RUFO</p><p>Miércoles - 10 de mayo · 19.00 h</p>"
+            "<h2>VALENCIA</h2><p>16 MAR - 12:00</p><p>Rejones</p><p></p><p></p>",
+            "<h2>VALENCIA</h2><p>16 MAR - 17:00</p><p>Corrida de toros</p><p></p><p></p>",
+            "<h2>Fitero (Navarra)</h2><p>16 MAR - 17:30</p><p>Recortes</p><p></p><p></p>"
         ];
 
         function showNextImage() {
             const images = document.querySelectorAll(".carousel img");
             const eventText = document.getElementById("event-text");
+            const indicators = document.querySelectorAll("#carousel-indicators span");
+
             images[index].classList.remove("active");
+            indicators[index].classList.remove("active");
+
             index = (index + 1) % images.length;
+
             images[index].classList.add("active");
+            indicators[index].classList.add("active");
             eventText.innerHTML = texts[index];
         }
 
