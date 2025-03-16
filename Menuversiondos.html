@@ -118,9 +118,17 @@
         .event-details {
             display: flex;
             flex-direction: column; /* Organiza los detalles en columna */
+            flex: 1; /* Ocupa el espacio restante */
         }
-        .event-details span {
+        .event-info {
+            display: flex;
+            align-items: center; /* Alinea la imagen y el texto */
             margin: 2px 0; /* Espacio entre los elementos */
+        }
+        .event-info img {
+            width: 20px; /* Tamaño de la imagen */
+            height: 20px; /* Tamaño de la imagen */
+            margin-right: 8px; /* Espacio entre la imagen y el texto */
         }
         .menu { 
             position: fixed; 
@@ -200,25 +208,52 @@
             <div class="event-item">
                 <span class="event-date">16 MAR</span>
                 <div class="event-details">
-                    <span>Valencia</span>
-                    <span>Rejones</span>
-                    <span>12:00</span>
+                    <div class="event-info">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmBIzm7Z8Wu399_Amw9EM5BQzty5rJhHYtG8WHKAboWvsOx40EShjXxpGytpbJb8FqFVVzd-EVx6TQyI4ML_g1TjJvSCZpZ8eHyoo0BZW9IxL7s4vehMHm2uUG1JeX3YuYIK2oW-WnLirleZratAf7COXMgORIpo1ste-zNBXJzbsz-pU3pZNCG7Zv4F4/s320/Proyecto%20nuevo%20(6).png" alt="Ubicación">
+                        <span>Valencia</span>
+                    </div>
+                    <div class="event-info">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoSnkpiJBe-vhlR9ZJIU4kfZEtrZcjokI3sHP4bFu1e1ZaaG3UOLtbfSAQN5rAHq1CjG4NV46hX3rQ7JyL_-4USOrciSZ9Ld2Fy2TpDVx_IzJX2jqfTuSOgg1qR7RLpT0H7793eLarE74oV7lXYWacXgkvlijejkIkhkYNfUQCThAX9EbltRWIR-WTmDM/s320/Proyecto%20nuevo%20(7).png" alt="Tipo de evento">
+                        <span>Rejones</span>
+                    </div>
+                    <div class="event-info">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpjx_pHhmjsLHRmBb5cXxfdQg7taRftZ9yL6YSgFZfsbEc5A1G3h7X8G88UUQ2xN_mU6p3xofZJP_ZD-avpM1XcVNFpt06n94wOxupYbXQ7YcTS39PKnCxzIbFfHlBwnQnj5DmNM46BIUGxv_aJsCldzWThd8gYHS726ud9Y64vTIje8XASI_jUDGM2ZE/s320/Proyecto%20nuevo%20(9).png" alt="Hora">
+                        <span>12:00</span>
+                    </div>
                 </div>
             </div>
             <div class="event-item">
                 <span class="event-date">16 MAR</span>
                 <div class="event-details">
-                    <span>Valencia</span>
-                    <span>Corrida de toros</span>
-                    <span>17:00</span>
+                    <div class="event-info">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmBIzm7Z8Wu399_Amw9EM5BQzty5rJhHYtG8WHKAboWvsOx40EShjXxpGytpbJb8FqFVVzd-EVx6TQyI4ML_g1TjJvSCZpZ8eHyoo0BZW9IxL7s4vehMHm2uUG1JeX3YuYIK2oW-WnLirleZratAf7COXMgORIpo1ste-zNBXJzbsz-pU3pZNCG7Zv4F4/s320/Proyecto%20nuevo%20(6).png" alt="Ubicación">
+                        <span>Valencia</span>
+                    </div>
+                    <div class="event-info">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoSnkpiJBe-vhlR9ZJIU4kfZEtrZcjokI3sHP4bFu1e1ZaaG3UOLtbfSAQN5rAHq1CjG4NV46hX3rQ7JyL_-4USOrciSZ9Ld2Fy2TpDVx_IzJX2jqfTuSOgg1qR7RLpT0H7793eLarE74oV7lXYWacXgkvlijejkIkhkYNfUQCThAX9EbltRWIR-WTmDM/s320/Proyecto%20nuevo%20(7).png" alt="Tipo de evento">
+                        <span>Corrida de toros</span>
+                    </div>
+                    <div class="event-info">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpjx_pHhmjsLHRmBb5cXxfdQg7taRftZ9yL6YSgFZfsbEc5A1G3h7X8G88UUQ2xN_mU6p3xofZJP_ZD-avpM1XcVNFpt06n94wOxupYbXQ7YcTS39PKnCxzIbFfHlBwnQnj5DmNM46BIUGxv_aJsCldzWThd8gYHS726ud9Y64vTIje8XASI_jUDGM2ZE/s320/Proyecto%20nuevo%20(9).png" alt="Hora">
+                        <span>17:00</span>
+                    </div>
                 </div>
             </div>
             <div class="event-item">
                 <span class="event-date">17 MAR</span>
                 <div class="event-details">
-                    <span>Valencia</span>
-                    <span>Corrida de toros</span>
-                    <span>17:00</span>
+                    <div class="event-info">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmBIzm7Z8Wu399_Amw9EM5BQzty5rJhHYtG8WHKAboWvsOx40EShjXxpGytpbJb8FqFVVzd-EVx6TQyI4ML_g1TjJvSCZpZ8eHyoo0BZW9IxL7s4vehMHm2uUG1JeX3YuYIK2oW-WnLirleZratAf7COXMgORIpo1ste-zNBXJzbsz-pU3pZNCG7Zv4F4/s320/Proyecto%20nuevo%20(6).png" alt="Ubicación">
+                        <span>Valencia</span>
+                    </div>
+                    <div class="event-info">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoSnkpiJBe-vhlR9ZJIU4kfZEtrZcjokI3sHP4bFu1e1ZaaG3UOLtbfSAQN5rAHq1CjG4NV46hX3rQ7JyL_-4USOrciSZ9Ld2Fy2TpDVx_IzJX2jqfTuSOgg1qR7RLpT0H7793eLarE74oV7lXYWacXgkvlijejkIkhkYNfUQCThAX9EbltRWIR-WTmDM/s320/Proyecto%20nuevo%20(7).png" alt="Tipo de evento">
+                        <span>Corrida de toros</span>
+                    </div>
+                    <div class="event-info">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpjx_pHhmjsLHRmBb5cXxfdQg7taRftZ9yL6YSgFZfsbEc5A1G3h7X8G88UUQ2xN_mU6p3xofZJP_ZD-avpM1XcVNFpt06n94wOxupYbXQ7YcTS39PKnCxzIbFfHlBwnQnj5DmNM46BIUGxv_aJsCldzWThd8gYHS726ud9Y64vTIje8XASI_jUDGM2ZE/s320/Proyecto%20nuevo%20(9).png" alt="Hora">
+                        <span>17:00</span>
+                    </div>
                 </div>
             </div>
         </div>
