@@ -33,7 +33,6 @@
             padding: 20px; 
             padding-bottom: 80px; 
         }
-        
         .event {
             display: flex;
             align-items: center;
@@ -50,7 +49,6 @@
         }
         .event h2 { margin: 0; color: #f5a51a; }
         .event p { margin: 5px 0; color: #ccc; }
-        
         .carousel {
             position: relative;
             max-width: 40%;
@@ -67,7 +65,6 @@
         .carousel img.active {
             display: block;
         }
-
         .star {
             position: absolute;
             top: 10px;
@@ -75,7 +72,6 @@
             width: 24px;
             height: 24px;
         }
-
         @media (max-width: 768px) {
             .event {
                 flex-direction: column;
@@ -93,7 +89,6 @@
                 text-align: center;
             }
         }
-
         .events-list { margin-top: 10px; }
         .event-item { 
             display: flex; 
@@ -103,7 +98,6 @@
             margin: 5px 0; 
             border-radius: 8px; 
         }
-
         .menu { 
             position: fixed; 
             bottom: 0; 
@@ -132,16 +126,16 @@
     </style>
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <h1>onetoro</h1>
-        <button class="button">Login</button>
-    </div>
-    <div class="container">
+        <button class="button" aria-label="Login">Login</button>
+    </header>
+    <main class="container">
         <div class="event">
             <div class="carousel">
-                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" class="active" alt="Imagen 1">
-                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" alt="Imagen 2">
-                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" alt="Imagen 3">
+                <img src="https://www.bandomovil.com/userFiles/dU/dUHeaIMG_0155.jpg" class="active" alt="Feria de Abril en Sevilla">
+                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" alt="Feria de Valencia">
+                <img src="https://toropasion.net/wp-content/uploads/2023/02/cartelera_valencia_web.jpg" alt="Feria de San Isidro en Madrid">
             </div>
             <div class="event-content" id="event-text">
                 <h2>Feria de Abril</h2>
@@ -154,31 +148,31 @@
         </div>
         <h3 style="color: #f5a51a;">Próximos eventos</h3>
         <div class="events-list">
-            <div class="event-item"><span>09 ABR</span> <span>Plaza de Toros de La Maestranza - 10:00 p. m.</span></div>
+            <div class="event-item"><span>06 JUL</span> <span>Traspinedo (Valladolid) - Encierro por las calles 10:00</span></div>
             <div class="event-item"><span>16 ABR</span> <span>Plaza de Toros de La Maestranza - 10:00 p. m.</span></div>
             <div class="event-item"><span>19 ABR</span> <span>Plaza de Toros de La Maestranza - 10:00 p. m.</span></div>
         </div>
-    </div>
-    <div class="menu">
-    <button onclick="window.location.href='https://tusitio.com/inicio'">Inicio</button>
-    <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'">Eventos</button>
-    <button onclick="window.location.href='https://tusitio.com/ganaderias'">Ganaderías</button>
-    </div>
+    </main>
+    <footer class="menu">
+        <button onclick="window.location.href='https://tusitio.com/inicio'" aria-label="Inicio">Inicio</button>
+        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'" aria-label="Eventos">Eventos</button>
+        <button onclick="window.location.href='https://tusitio.com/ganaderias'" aria-label="Ganaderías">Ganaderías</button>
+    </footer>
     <script>
         let index = 0;
         const texts = [
-            "<h2>Feria de Abril</h2><p>Sevilla</p><p>Toros de NÚÑEZ DEL CUVILLO</p><p>MORANTE de La Puebla, 'EL JULI' y ROCA REY</p><p>Domingo - 9 de abril · 18.30 h</p>",
+            "<h2>Traspinedo</h2><p>Valladolid</p><p>Encierro por las calles</p><p>Domingo - 9 de abril · 18.30 h</p><p></p>",
             "<h2>Feria de Valencia</h2><p>Valencia</p><p>Toros de GARCIGRANDE</p><p>MANZANARES, TALAVANTE y ROCA REY</p><p>Viernes - 15 de marzo · 17.30 h</p>",
             "<h2>Feria de San Isidro</h2><p>Madrid</p><p>Toros de VICTORIANO DEL RÍO</p><p>EL JULI, PERERA y TOMÁS RUFO</p><p>Miércoles - 10 de mayo · 19.00 h</p>"
         ];
 
         function showNextImage() {
-            let images = document.querySelectorAll(".carousel img");
-            let eventText = document.getElementById("event-text");
+            const images = document.querySelectorAll(".carousel img");
+            const eventText = document.getElementById("event-text");
             images[index].classList.remove("active");
             index = (index + 1) % images.length;
             images[index].classList.add("active");
-            eventText.innerHTML = texts[index]; // Aquí ahora se utilizan cadenas seguras
+            eventText.innerHTML = texts[index];
         }
 
         setInterval(showNextImage, 3000);
