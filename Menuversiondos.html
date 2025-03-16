@@ -89,14 +89,34 @@
                 text-align: center;
             }
         }
-        .events-list { margin-top: 10px; }
-        .event-item { 
-            display: flex; 
-            justify-content: space-between; 
-            padding: 12px; 
-            background: #333; 
-            margin: 5px 0; 
-            border-radius: 8px; 
+        .events-list { 
+            margin-top: 10px; 
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Espacio entre eventos */
+        }
+        .event-item {
+            display: grid;
+            grid-template-columns: 80px 1fr 2fr 80px; /* Ajusta el ancho de las columnas */
+            align-items: center;
+            padding: 12px;
+            background: #333;
+            border-radius: 8px;
+            gap: 10px; /* Espacio entre columnas */
+        }
+        .event-day {
+            font-weight: bold;
+            color: #f5a51a;
+        }
+        .event-location {
+            color: #ccc;
+        }
+        .event-description {
+            color: #ccc;
+        }
+        .event-time {
+            text-align: right;
+            color: #ccc;
         }
         .menu { 
             position: fixed; 
@@ -148,9 +168,24 @@
         </div>
         <h3 style="color: #f5a51a;">Próximos eventos</h3>
         <div class="events-list">
-            <div class="event-item"><span>06 JUL</span> <span>Traspinedo (Valladolid) - Encierro por las calles 10:00</span></div>
-            <div class="event-item"><span>16 ABR</span> <span>Plaza de Toros de La Maestranza - 10:00 p. m.</span></div>
-            <div class="event-item"><span>19 ABR</span> <span>Plaza de Toros de La Maestranza - 10:00 p. m.</span></div>
+            <div class="event-item">
+                <span class="event-day">06 JUL</span>
+                <span class="event-location">Traspinedo (Valladolid)</span>
+                <span class="event-description">Encierro por las calles</span>
+                <span class="event-time">10:00</span>
+            </div>
+            <div class="event-item">
+                <span class="event-day">16 ABR</span>
+                <span class="event-location">Plaza de Toros de La Maestranza</span>
+                <span class="event-description">Corrida de toros</span>
+                <span class="event-time">10:00 p. m.</span>
+            </div>
+            <div class="event-item">
+                <span class="event-day">19 ABR</span>
+                <span class="event-location">Plaza de Toros de La Maestranza</span>
+                <span class="event-description">Corrida de toros</span>
+                <span class="event-time">10:00 p. m.</span>
+            </div>
         </div>
     </main>
     <footer class="menu">
