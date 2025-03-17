@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onetoro - Eventos</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            background-color: #04151f; 
-            color: white; 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #04151f;
+            color: white;
             margin: 0;
-            overflow-y: auto; 
+            overflow-y: auto;
         }
-        .header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 15px; 
-            background: #11212a; 
-            border-bottom: 2px solid #ffffff; 
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #11212a;
+            border-bottom: 2px solid #ffffff;
         }
         .header h1 {
             display: flex;
@@ -26,32 +26,32 @@
             margin: 0;
         }
         .header h1 img {
-            width: 30px; 
-            margin-right: 10px; 
+            width: 30px;
+            margin-right: 10px;
         }
-        .button { 
-            border: 2px solid #f5a51a; 
-            padding: 8px 15px; 
-            background: none; 
-            color: #f5a51a; 
-            cursor: pointer; 
-            border-radius: 20px; 
-            font-weight: bold; 
+        .button {
+            border: 2px solid #f5a51a;
+            padding: 8px 15px;
+            background: none;
+            color: #f5a51a;
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: bold;
         }
-        .container { 
-            padding: 20px; 
-            padding-bottom: 100px; 
+        .container {
+            padding: 20px;
+            padding-bottom: 100px;
         }
         .calendar {
-            width: 100%; 
-            max-width: 400px; 
-            background: #11212a; 
+            width: 100%;
+            max-width: 400px;
+            background: #11212a;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
             text-align: center;
-            margin: 20px auto; 
-            box-sizing: border-box; 
+            margin: 20px auto;
+            box-sizing: border-box;
         }
         .calendar .header {
             display: flex;
@@ -64,7 +64,7 @@
             border: none;
             font-size: 20px;
             cursor: pointer;
-            color: #ffffff; 
+            color: #ffffff;
         }
         .calendar .days {
             display: grid;
@@ -74,21 +74,21 @@
         }
         .calendar .day {
             position: relative;
-            width: 40px; 
-            height: 40px; 
+            width: 40px;
+            height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 14px; 
+            font-size: 14px;
             border-radius: 50%;
-            background: #2a3841; 
+            background: #2a3841;
             margin: auto;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            color: #ffffff; 
+            color: #ffffff;
         }
         .calendar .day:hover {
-            background-color: #444444; 
+            background-color: #444444;
         }
         .calendar .day.empty {
             background: none;
@@ -99,21 +99,21 @@
             bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
-            width: 8px; 
-            height: 8px; 
+            width: 8px;
+            height: 8px;
             background: #007e00;
             border-radius: 50%;
         }
         #eventsList {
-            width: 100%; 
-            max-width: 400px; 
-            background: #11212a; 
+            width: 100%;
+            max-width: 400px;
+            background: #11212a;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
             text-align: left;
-            margin: 20px auto; 
-            box-sizing: border-box; 
+            margin: 20px auto;
+            box-sizing: border-box;
         }
         .event-item {
             display: flex;
@@ -121,10 +121,10 @@
             margin-bottom: 10px;
         }
         .event-item img {
-            width: 50px; 
-            height: 50px; 
+            width: 50px;
+            height: 50px;
             margin-right: 10px;
-            border-radius: 8px; 
+            border-radius: 8px;
             cursor: pointer;
         }
         .event-details {
@@ -141,41 +141,41 @@
         }
         .weekday {
             text-align: center;
-            font-size: 14px; 
+            font-size: 14px;
         }
-        .menu { 
-            position: fixed; 
-            bottom: 0; 
-            width: 100%; 
-            background: #11212a; 
-            display: flex; 
-            justify-content: space-around; 
-            padding: 8px 0; 
-            border-top: 2px solid #04151f; 
-            z-index: 1000; 
-        }
-        .menu button { 
-            background: none; 
-            border: none; 
-            color: white; 
-            cursor: pointer; 
-            font-size: 12px; 
-            font-weight: bold; 
-            padding: 6px 10px; 
-            border-radius: 10px; 
-            transition: 0.3s; 
+        .menu {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #11212a;
             display: flex;
-            flex-direction: column; 
-            align-items: center; 
+            justify-content: space-around;
+            padding: 8px 0;
+            border-top: 2px solid #04151f;
+            z-index: 1000;
+        }
+        .menu button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 10px;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .menu button img {
-            width: 24px; 
-            height: 24px; 
-            margin-bottom: 4px; 
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
         }
-        .menu button:hover { 
-            background: #2a3841; 
-            color: white; 
+        .menu button:hover {
+            background: #2a3841;
+            color: white;
         }
         #fullScreenImageContainer {
             display: none;
@@ -210,16 +210,44 @@
             border-radius: 5px;
             z-index: 2001;
         }
+        .tags {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .tags button {
+            margin: 0 5px;
+            padding: 8px 15px;
+            border: 2px solid #2a3841;
+            background: none;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .tags button.active {
+            background: #2a3841;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjj1aR6gWI-RT__s9ZxRL2oYMlIWKWj5OQw1jisPG8usWXpiviOhnNRNDrNPZKAOuwgi_sIOhIrGSoM3CTJtss6OX5coO0QxjUnskQljIdfMWrNU_AqXEq8MkDh7vcg4iKfo6C5PMDr5KxUlAFXNhXZM9WKZljnsNT2w3PDDjP61iOAVnimiOrZNrUlP6U" alt="Logo de Onetoro"> 
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjj1aR6gWI-RT__s9ZxRL2oYMlIWKWj5OQw1jisPG8usWXpiviOhnNRNDrNPZKAOuwgi_sIOhIrGSoM3CTJtss6OX5coO0QxjUnskQljIdfMWrNU_AqXEq8MkDh7vcg4iKfo6C5PMDr5KxUlAFXNhXZM9WKZljnsNT2w3PDDjP61iOAVnimiOrZNrUlP6U" alt="Logo de Onetoro">
             onetoro
         </h1>
     </div>
     <div class="container">
+        <!-- Botones de etiquetas -->
+        <div class="tags">
+            <button onclick="filterEvents('Norte', this)">Norte</button>
+            <button onclick="filterEvents('Sur', this)">Sur</button>
+            <button onclick="filterEvents('Este', this)">Este</button>
+            <button onclick="filterEvents('Oeste', this)">Oeste</button>
+            <button onclick="filterEvents('Centro', this)">Centro</button>
+        </div>
         <!-- Calendario -->
         <div class="calendar">
             <div class="header">
@@ -244,11 +272,11 @@
 
     <div class="menu">
         <button onclick="window.location.href='https://mariodr22.github.io/webtoros/Menuversiondos'">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9m4r2oHtp1n6-lxdMTDBqlVfWcNQXnBxEw12upB_w8Q7pBPiMrYpbit_RbEwATVJ2kB4_lnfaMhYJiFfDyGx5O41CWxk-_eWezklB2N61HCKrviN28KTjdnuf1UCzqp2YM0XBpaidy-4zlVOpipn_Px9zKbSSocyBI3dz1fHdbaPDaBxe3yIp3m6S8-A/s320/Proyecto%20nuevo%20(7)%20(1).png" alt="Icono Inicio"> 
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9m4r2oHtp1n6-lxdMTDBqlVfWcNQXnBxEw12upB_w8Q7pBPiMrYpbit_RbEwATVJ2kB4_lnfaMhYJiFfDyGx5O41CWxk-_eWezklB2N61HCKrviN28KTjdnuf1UCzqp2YM0XBpaidy-4zlVOpipn_Px9zKbSSocyBI3dz1fHdbaPDaBxe3yIp3m6S8-A/s320/Proyecto%20nuevo%20(7)%20(1).png" alt="Icono Inicio">
             Inicio
         </button>
         <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCtMKS-NrydTO3EYPEB6wnJNDSNwlV58E3P6J4Og2ag-Jaobnuri6dnPShyVyOdljPyF5lRp-yRfPMfANkPF4Ltay-289DkT77ockzB58ZGAcWKnkKLP8VbfcxRJZqCSpPJOnYvQBApxC86usTqnLk3ddonMCullcWwq7bkakPH3fU-vNtKLkAKNkHbWE/s320/Proyecto%20nuevo%20(7).png" alt="Icono Eventos"> 
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCtMKS-NrydTO3EYPEB6wnJNDSNwlV58E3P6J4Og2ag-Jaobnuri6dnPShyVyOdljPyF5lRp-yRfPMfANkPF4Ltay-289DkT77ockzB58ZGAcWKnkKLP8VbfcxRJZqCSpPJOnYvQBApxC86usTqnLk3ddonMCullcWwq7bkakPH3fU-vNtKLkAKNkHbWE/s320/Proyecto%20nuevo%20(7).png" alt="Icono Eventos">
             Eventos
         </button>
     </div>
@@ -261,13 +289,15 @@
 
     <script>
         const events = [
-            { date: "2025-03-15", place: "VALENCIA", time: "Recortes", extra: "11:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg" },
-            { date: "2025-03-15", place: "Casas de Lázaro (Albacete)", time: "Novillada", extra: "17:00", image: "https://scontent-mad1-1.xx.fbcdn.net/v/t39.30808-6/480494699_602561389311071_7351350269733396675_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=wdDkSGxsOt4Q7kNvgHNKP_k&_nc_oc=AdibxpUagGKENkVFGvc0yIEPgPibhmrBIt4kAbixUsCekdXKjUcF67Sxf0ZMODNijf4&_nc_zt=23&_nc_ht=scontent-mad1-1.xx&_nc_gid=AnFFrpYg_3qV5fGA2q4GMVk&oh=00_AYE1_RKQHSgPLXH3nIs3gwxoc9QUFKrn7kPKjWAOO-xvtw&oe=67D956FA" },
-            { date: "2025-03-15", place: "Villaseca de la Sagra (Toledo)", time: "Corrida de toros", extra: "17:30", image: "https://pbs.twimg.com/media/Gl6Jgz4WgAAsSeH?format=jpg&name=large" },
-            { date: "2025-03-15", place: "VALENCIA", time: "Suelta en la plaza", extra: "22:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg" }
+            { date: "2025-03-15", place: "VALENCIA", time: "Recortes", extra: "11:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg", region: "Este" },
+            { date: "2025-03-15", place: "Casas de Lázaro (Albacete)", time: "Novillada", extra: "17:00", image: "https://scontent-mad1-1.xx.fbcdn.net/v/t39.30808-6/480494699_602561389311071_7351350269733396675_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=wdDkSGxsOt4Q7kNvgHNKP_k&_nc_oc=AdibxpUagGKENkVFGvc0yIEPgPibhmrBIt4kAbixUsCekdXKjUcF67Sxf0ZMODNijf4&_nc_zt=23&_nc_ht=scontent-mad1-1.xx&_nc_gid=AnFFrpYg_3qV5fGA2q4GMVk&oh=00_AYE1_RKQHSgPLXH3nIs3gwxoc9QUFKrn7kPKjWAOO-xvtw&oe=67D956FA", region: "Centro" },
+            { date: "2025-03-15", place: "Villaseca de la Sagra (Toledo)", time: "Corrida de toros", extra: "17:30", image: "https://pbs.twimg.com/media/Gl6Jgz4WgAAsSeH?format=jpg&name=large", region: "Centro" },
+            { date: "2025-03-15", place: "VALENCIA", time: "Suelta en la plaza", extra: "22:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg", region: "Este" }
         ];
 
         let date = new Date();
+        let selectedRegion = null;
+        let activeButton = null;
 
         function renderCalendar() {
             const daysContainer = document.getElementById("days-container");
@@ -276,7 +306,7 @@
             const year = date.getFullYear();
             const month = date.getMonth();
             const firstDayOfMonth = new Date(year, month, 1);
-            let firstDayOfWeek = firstDayOfMonth.getDay(); 
+            let firstDayOfWeek = firstDayOfMonth.getDay();
 
             firstDayOfWeek = (firstDayOfWeek === 0) ? 6 : firstDayOfWeek - 1;
 
@@ -296,7 +326,7 @@
                 let fullDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
                 dayElement.onclick = () => showEvents(fullDate);
 
-                const dayEvents = events.filter(event => event.date === fullDate);
+                const dayEvents = events.filter(event => event.date === fullDate && (!selectedRegion || event.region === selectedRegion));
                 if (dayEvents.length > 0) {
                     let eventIndicator = document.createElement("div");
                     eventIndicator.className = "event-indicator";
@@ -309,9 +339,9 @@
 
         function showEvents(date) {
             const eventsList = document.getElementById("eventsList");
-            eventsList.innerHTML = ""; 
+            eventsList.innerHTML = "";
 
-            const dayEvents = events.filter(event => event.date === date);
+            const dayEvents = events.filter(event => event.date === date && (!selectedRegion || event.region === selectedRegion));
             if (dayEvents.length > 0) {
                 dayEvents.forEach(event => {
                     const eventItem = document.createElement("div");
@@ -326,6 +356,19 @@
                     eventsList.appendChild(eventItem);
                 });
             }
+        }
+
+        function filterEvents(region, button) {
+            if (activeButton) {
+                activeButton.classList.remove("active"); // Quita la clase active del botón anterior
+            }
+            selectedRegion = selectedRegion === region ? null : region; // Alternar la selección
+            activeButton = selectedRegion === region ? button : null; // Actualizar el botón activo
+            if (activeButton) {
+                activeButton.classList.add("active"); // Añade la clase active al botón seleccionado
+            }
+            renderCalendar();
+            showEvents(date.toISOString().split('T')[0]);
         }
 
         function openFullScreen(imageSrc) {
