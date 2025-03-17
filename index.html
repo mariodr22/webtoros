@@ -7,18 +7,18 @@
     <style>
         body { 
             font-family: Arial, sans-serif; 
-            background-color: #121212; 
+            background-color: #04151f; 
             color: white; 
             margin: 0;
-            overflow-x: hidden; /* Evita el scroll horizontal */
+            overflow-y: auto; 
         }
         .header { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             padding: 15px; 
-            background: #1f1f1f; 
-            border-bottom: 2px solid #f5a51a; 
+            background: #11212a; 
+            border-bottom: 2px solid #ffffff; 
         }
         .header h1 {
             display: flex;
@@ -26,8 +26,8 @@
             margin: 0;
         }
         .header h1 img {
-            width: 30px; /* Ajusta el tamaño del logo */
-            margin-right: 10px; /* Espacio entre el logo y el texto */
+            width: 30px; 
+            margin-right: 10px; 
         }
         .button { 
             border: 2px solid #f5a51a; 
@@ -40,51 +40,18 @@
         }
         .container { 
             padding: 20px; 
-            padding-bottom: 80px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centra todo el contenido horizontalmente */
-            width: 100%; /* Ocupa todo el ancho disponible */
-            box-sizing: border-box; /* Evita desbordamiento por padding */
+            padding-bottom: 100px; 
         }
-
-        .menu { 
-            position: fixed; 
-            bottom: 0; 
-            width: 100%; 
-            background: #1f1f1f; 
-            display: flex; 
-            justify-content: space-around; 
-            padding: 15px 0; 
-            border-top: 2px solid #f5a51a; 
-        }
-        .menu button { 
-            background: none; 
-            border: none; 
-            color: white; 
-            cursor: pointer; 
-            font-size: 14px; 
-            font-weight: bold; 
-            padding: 10px; 
-            border-radius: 10px; 
-            transition: 0.3s; 
-        }
-        .menu button:hover { 
-            background: #f5a51a; 
-            color: black; 
-        }
-
-        /* Estilos del calendario */
         .calendar {
-            width: 100%; /* Ocupa todo el ancho disponible */
-            max-width: 400px; /* Limita el ancho máximo para no estirarse demasiado */
-            background: #1e1e1e; /* Fondo del calendario oscuro */
+            width: 100%; 
+            max-width: 400px; 
+            background: #11212a; 
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
             text-align: center;
-            margin: 20px 0; /* Espacio arriba y abajo */
-            box-sizing: border-box; /* Evita desbordamiento por padding */
+            margin: 20px auto; 
+            box-sizing: border-box; 
         }
         .calendar .header {
             display: flex;
@@ -97,7 +64,7 @@
             border: none;
             font-size: 20px;
             cursor: pointer;
-            color: #ffffff; /* Color de los botones */
+            color: #ffffff; 
         }
         .calendar .days {
             display: grid;
@@ -107,21 +74,21 @@
         }
         .calendar .day {
             position: relative;
-            width: 40px; /* Tamaño más pequeño para móviles */
-            height: 40px; /* Tamaño más pequeño para móviles */
+            width: 40px; 
+            height: 40px; 
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 14px; /* Tamaño de fuente más pequeño */
+            font-size: 14px; 
             border-radius: 50%;
-            background: #2e2e2e; /* Fondo de los días */
+            background: #2a3841; 
             margin: auto;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            color: #ffffff; /* Color del texto de los días */
+            color: #ffffff; 
         }
         .calendar .day:hover {
-            background-color: #444444; /* Color de los días al pasar el ratón por encima */
+            background-color: #444444; 
         }
         .calendar .day.empty {
             background: none;
@@ -132,48 +99,21 @@
             bottom: 5px;
             left: 50%;
             transform: translateX(-50%);
-            width: 8px; /* Tamaño más pequeño para móviles */
-            height: 8px; /* Tamaño más pequeño para móviles */
-            background: #f5a51a;
+            width: 8px; 
+            height: 8px; 
+            background: #007e00;
             border-radius: 50%;
         }
         #eventsList {
-            width: 100%; /* Ocupa todo el ancho disponible */
-            max-width: 400px; /* Limita el ancho máximo para no estirarse demasiado */
-            background: #1e1e1e; /* Fondo de la lista de eventos oscuro */
+            width: 100%; 
+            max-width: 400px; 
+            background: #11212a; 
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
             text-align: left;
-            margin-top: 20px; /* Espacio entre el calendario y la lista de eventos */
-            box-sizing: border-box; /* Evita desbordamiento por padding */
-        }
-        #fullScreenImageContainer {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-        #fullScreenImage {
-            max-width: 90%;
-            max-height: 90%;
-        }
-        #closeFullScreen {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #f5a51a;
-            color: rgb(0, 0, 0);
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
+            margin: 20px auto; 
+            box-sizing: border-box; 
         }
         .event-item {
             display: flex;
@@ -181,10 +121,11 @@
             margin-bottom: 10px;
         }
         .event-item img {
-            width: 50px; /* Tamaño fijo para las imágenes */
-            height: 50px; /* Tamaño fijo para las imágenes */
+            width: 50px; 
+            height: 50px; 
             margin-right: 10px;
-            border-radius: 8px; /* Bordes redondeados */
+            border-radius: 8px; 
+            cursor: pointer;
         }
         .event-details {
             display: flex;
@@ -200,14 +141,81 @@
         }
         .weekday {
             text-align: center;
-            font-size: 14px; /* Tamaño de fuente más pequeño */
+            font-size: 14px; 
+        }
+        .menu { 
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+            background: #11212a; 
+            display: flex; 
+            justify-content: space-around; 
+            padding: 8px 0; 
+            border-top: 2px solid #04151f; 
+            z-index: 1000; 
+        }
+        .menu button { 
+            background: none; 
+            border: none; 
+            color: white; 
+            cursor: pointer; 
+            font-size: 12px; 
+            font-weight: bold; 
+            padding: 6px 10px; 
+            border-radius: 10px; 
+            transition: 0.3s; 
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+        }
+        .menu button img {
+            width: 24px; 
+            height: 24px; 
+            margin-bottom: 4px; 
+        }
+        .menu button:hover { 
+            background: #2a3841; 
+            color: white; 
+        }
+        #fullScreenImageContainer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 2000;
+        }
+        #fullScreenImage {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+        #closeFullScreen {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #0b171e;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            z-index: 2001;
         }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjj1aR6gWI-RT__s9ZxRL2oYMlIWKWj5OQw1jisPG8usWXpiviOhnNRNDrNPZKAOuwgi_sIOhIrGSoM3CTJtss6OX5coO0QxjUnskQljIdfMWrNU_AqXEq8MkDh7vcg4iKfo6C5PMDr5KxUlAFXNhXZM9WKZljnsNT2w3PDDjP61iOAVnimiOrZNrUlP6U" alt="Logo de Onetoro"> <!-- Cambia la URL por la de tu logo -->
+            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjj1aR6gWI-RT__s9ZxRL2oYMlIWKWj5OQw1jisPG8usWXpiviOhnNRNDrNPZKAOuwgi_sIOhIrGSoM3CTJtss6OX5coO0QxjUnskQljIdfMWrNU_AqXEq8MkDh7vcg4iKfo6C5PMDr5KxUlAFXNhXZM9WKZljnsNT2w3PDDjP61iOAVnimiOrZNrUlP6U" alt="Logo de Onetoro"> 
             onetoro
         </h1>
     </div>
@@ -235,17 +243,23 @@
     </div>
 
     <div class="menu">
-        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/Menuversiondos'">Inicio</button>
-        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'">Eventos</button>
+        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/Menuversiondos'">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9m4r2oHtp1n6-lxdMTDBqlVfWcNQXnBxEw12upB_w8Q7pBPiMrYpbit_RbEwATVJ2kB4_lnfaMhYJiFfDyGx5O41CWxk-_eWezklB2N61HCKrviN28KTjdnuf1UCzqp2YM0XBpaidy-4zlVOpipn_Px9zKbSSocyBI3dz1fHdbaPDaBxe3yIp3m6S8-A/s320/Proyecto%20nuevo%20(7)%20(1).png" alt="Icono Inicio"> 
+            Inicio
+        </button>
+        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCtMKS-NrydTO3EYPEB6wnJNDSNwlV58E3P6J4Og2ag-Jaobnuri6dnPShyVyOdljPyF5lRp-yRfPMfANkPF4Ltay-289DkT77ockzB58ZGAcWKnkKLP8VbfcxRJZqCSpPJOnYvQBApxC86usTqnLk3ddonMCullcWwq7bkakPH3fU-vNtKLkAKNkHbWE/s320/Proyecto%20nuevo%20(7).png" alt="Icono Eventos"> 
+            Eventos
+        </button>
     </div>
 
+    <!-- Contenedor de imagen a pantalla completa -->
     <div id="fullScreenImageContainer">
         <button id="closeFullScreen">Cerrar</button>
         <img id="fullScreenImage" src="" alt="Evento en grande">
     </div>
 
     <script>
-        // Script del calendario
         const events = [
             { date: "2025-03-15", place: "VALENCIA", time: "Recortes", extra: "11:00", image: "https://s2.abcstatics.com/abc/www/multimedia/cultura/2025/01/15/valencia-U66254022330UmP-760x1427@diario_abc.jpg" },
             { date: "2025-03-15", place: "Casas de Lázaro (Albacete)", time: "Novillada", extra: "17:00", image: "https://scontent-mad1-1.xx.fbcdn.net/v/t39.30808-6/480494699_602561389311071_7351350269733396675_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=wdDkSGxsOt4Q7kNvgHNKP_k&_nc_oc=AdibxpUagGKENkVFGvc0yIEPgPibhmrBIt4kAbixUsCekdXKjUcF67Sxf0ZMODNijf4&_nc_zt=23&_nc_ht=scontent-mad1-1.xx&_nc_gid=AnFFrpYg_3qV5fGA2q4GMVk&oh=00_AYE1_RKQHSgPLXH3nIs3gwxoc9QUFKrn7kPKjWAOO-xvtw&oe=67D956FA" },
@@ -262,15 +276,13 @@
             const year = date.getFullYear();
             const month = date.getMonth();
             const firstDayOfMonth = new Date(year, month, 1);
-            let firstDayOfWeek = firstDayOfMonth.getDay(); // 0 (domingo) a 6 (sábado)
+            let firstDayOfWeek = firstDayOfMonth.getDay(); 
 
-            // Ajustar para que el lunes sea el primer día de la semana
             firstDayOfWeek = (firstDayOfWeek === 0) ? 6 : firstDayOfWeek - 1;
 
             const lastDay = new Date(year, month + 1, 0).getDate();
             document.getElementById("monthYear").textContent = `${year} - ${date.toLocaleString('default', { month: 'long' })}`;
 
-            // Agregar días vacíos al principio del mes
             for (let i = 0; i < firstDayOfWeek; i++) {
                 let emptyElement = document.createElement("div");
                 emptyElement.className = "day empty";
@@ -284,7 +296,6 @@
                 let fullDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
                 dayElement.onclick = () => showEvents(fullDate);
 
-                // Agregar un solo círculo verde si hay eventos
                 const dayEvents = events.filter(event => event.date === fullDate);
                 if (dayEvents.length > 0) {
                     let eventIndicator = document.createElement("div");
@@ -298,7 +309,7 @@
 
         function showEvents(date) {
             const eventsList = document.getElementById("eventsList");
-            eventsList.innerHTML = ""; // Clear previous events
+            eventsList.innerHTML = ""; 
 
             const dayEvents = events.filter(event => event.date === date);
             if (dayEvents.length > 0) {
