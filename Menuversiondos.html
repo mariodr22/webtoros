@@ -40,7 +40,7 @@
         }
         .container { 
             padding: 20px; 
-            padding-bottom: 80px; 
+            padding-bottom: 100px; /* Aumentar el padding inferior para evitar solapamiento */
         }
         .event {
             display: flex;
@@ -137,19 +137,28 @@
             background: #11212a; 
             display: flex; 
             justify-content: space-around; 
-            padding: 15px 0; 
+            padding: 8px 0; /* Reducir el padding vertical */
             border-top: 2px solid #ffffff; 
+            z-index: 1000; /* Asegurar que el menú esté por encima del contenido */
         }
         .menu button { 
             background: none; 
             border: none; 
             color: white; 
             cursor: pointer; 
-            font-size: 14px; 
+            font-size: 12px; /* Reducir el tamaño de la fuente */
             font-weight: bold; 
-            padding: 10px; 
+            padding: 6px 10px; /* Reducir el padding */
             border-radius: 10px; 
             transition: 0.3s; 
+            display: flex;
+            flex-direction: column; /* Icono encima del texto */
+            align-items: center; /* Centrar icono y texto */
+        }
+        .menu button img {
+            width: 24px; /* Tamaño del icono */
+            height: 24px; /* Tamaño del icono */
+            margin-bottom: 4px; /* Espacio entre el icono y el texto */
         }
         .menu button:hover { 
             background: #2a3841; 
@@ -258,8 +267,14 @@
         </div>
     </main>
     <footer class="menu">
-        <button onclick="window.location.href='https://tusitio.com/inicio'" aria-label="Inicio">Inicio</button>
-        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'" aria-label="Eventos">Eventos</button>
+        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/Menuversiondos'" aria-label="Inicio">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9m4r2oHtp1n6-lxdMTDBqlVfWcNQXnBxEw12upB_w8Q7pBPiMrYpbit_RbEwATVJ2kB4_lnfaMhYJiFfDyGx5O41CWxk-_eWezklB2N61HCKrviN28KTjdnuf1UCzqp2YM0XBpaidy-4zlVOpipn_Px9zKbSSocyBI3dz1fHdbaPDaBxe3yIp3m6S8-A/s320/Proyecto%20nuevo%20(7)%20(1).png" alt="Icono Inicio"> <!-- Icono de Inicio -->
+            Inicio
+        </button>
+        <button onclick="window.location.href='https://mariodr22.github.io/webtoros/index'" aria-label="Eventos">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCtMKS-NrydTO3EYPEB6wnJNDSNwlV58E3P6J4Og2ag-Jaobnuri6dnPShyVyOdljPyF5lRp-yRfPMfANkPF4Ltay-289DkT77ockzB58ZGAcWKnkKLP8VbfcxRJZqCSpPJOnYvQBApxC86usTqnLk3ddonMCullcWwq7bkakPH3fU-vNtKLkAKNkHbWE/s320/Proyecto%20nuevo%20(7).png" alt="Icono Eventos"> <!-- Icono de Eventos -->
+            Eventos
+        </button>
     </footer>
     <script>
         let index = 0;
