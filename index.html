@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onetoro - Eventos</title>
     <style>
+        /* Tus estilos actuales */
         body {
             font-family: Arial, sans-serif;
             background-color: #04151f;
@@ -284,15 +285,15 @@
     <!-- Contenedor de imagen a pantalla completa -->
     <div id="fullScreenImageContainer">
         <button id="closeFullScreen">Cerrar</button>
-        <img id="fullScreenImage" src="" alt="Evento en grande">
+        <img id="fullScreenImage" src="" alt="Evento en grande" loading="lazy">
     </div>
 
     <script>
         const events = [
-            { date: "2025-03-15", place: "VALENCIA", time: "Recortes", extra: "11:00", image: "Imagenes/SINFONDO.png", region: "Este" },
-            { date: "2025-03-15", place: "Casas de Lázaro (Albacete)", time: "Novillada", extra: "17:00", image: "Imagenes/SINFONDO.png", region: "Centro" },
-            { date: "2025-03-15", place: "Villaseca de la Sagra (Toledo)", time: "Corrida de toros", extra: "17:30", image: "Imagenes/SINFONDO.png", region: "Centro" },
-            { date: "2025-03-15", place: "VALENCIA", time: "Suelta en la plaza", extra: "22:00", image: "Imagenes/SINFONDO.png", region: "Este" }
+            { date: "2025-03-15", place: "VALENCIA", time: "Recortes", extra: "11:00", image: "https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/Imagenes/SINFONDO.png", region: "Este" },
+            { date: "2025-03-15", place: "Casas de Lázaro (Albacete)", time: "Novillada", extra: "17:00", image: "https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/Imagenes/SINFONDO.png", region: "Centro" },
+            { date: "2025-03-15", place: "Villaseca de la Sagra (Toledo)", time: "Corrida de toros", extra: "17:30", image: "https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/Imagenes/SINFONDO.png", region: "Centro" },
+            { date: "2025-03-15", place: "VALENCIA", time: "Suelta en la plaza", extra: "22:00", image: "https://raw.githubusercontent.com/tu-usuario/tu-repositorio/main/Imagenes/SINFONDO.png", region: "Este" }
         ];
 
         let date = new Date();
@@ -347,7 +348,7 @@
                     const eventItem = document.createElement("div");
                     eventItem.className = "event-item";
                     eventItem.innerHTML = `
-                        <img src="${event.image}" alt="Evento" width="50" onclick="openFullScreen('${event.image}')">
+                        <img src="${event.image}" alt="Evento" width="50" loading="lazy" onclick="openFullScreen('${event.image}')">
                         <div class="event-details">
                             <strong>${event.place}</strong>
                             ${event.time}<br>
