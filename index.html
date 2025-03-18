@@ -289,104 +289,10 @@
 
     <script>
         const events = [
-            // DIA 4 DE ABRIL
-            { date: "2025-04-04", place: "Albal (Valencia)", time: "Suelta en la plaza", extra: "23:59", image: "SINFONDO.png", region: "Este" },
-            { date: "2025-04-04", place: "Gátova (Valencia)", time: "Calles y plaza", extra: "23:59", image: "SINFONDO.png", region: "Este" },
-            // DIA 5 DE ABRIL
-            { date: "2025-04-05", place: "Gea de Albarracín (Teruel)", time: "Suelta en la plaza", extra: "10:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Albocácer (Castellón)", time: "Calles y plaza", extra: "11:00", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Aguilar del Alfambra (Teruel)", time: "Calles y plaza", extra: "11:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Ademuz (Valencia)", time: "Encierro por las calles", extra: "11:00", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Gátova (Valencia)", time: "Calles y plaza", extra: "12:00", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Valbona (Teruel)", time: "Calles y plaza", extra: "12:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Albal (Valencia)", time: "Calles y plaza", extra: "13:00", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Ademuz (Valencia)", time: "Encierro por las calles", extra: "16:00", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Gea de Albarracín (Teruel)", time: "Calles y plaza", extra: "16:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Torres de Berrellén (Zaragoza)", time: "Calles y plaza", extra: "17:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Albocácer (Castellón)", time: "Calles y plaza", extra: "17:00", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Roquetas de Mar (Almería)", time: "Novillada", extra: "17:00", image: "", region: "Sur" },
-            { date: "2025-04-05", place: "Aguilar del Alfambra (Teruel)", time: "Calles y plaza", extra: "17:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Gátova (Valencia)", time: "Calles y plaza", extra: "17:00", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Valbona (Teruel)", time: "Calles y plaza", extra: "17:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Valderrobres (Teruel)", time: "Suelta en la plaza", extra: "17:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Albal (Valencia)", time: "Suelta en la plaza", extra: "17:30", image: "", region: "Este" },           
-            { date: "2025-04-05", place: "Sanlúcar de Barrameda (Cádiz)", time: "Rejones", extra: "18:00", image: "", region: "Sur" },
-            { date: "2025-04-05", place: "Vinaroz (Castellón)", time: "Novillada", extra: "18:00", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Moralzarzal (Madrid)", time: "Corrida de toros", extra: "18:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Gea de Albarracín (Teruel)", time: "Calles y plaza", extra: "23:00", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Albocácer (Castellón)", time: "Calles y plaza", extra: "23:30", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Valbona (Teruel)", time: "Calles y plaza", extra: "23:30", image: "", region: "Centro" },
-            { date: "2025-04-05", place: "Gátova (Valencia)", time: "Calles y plaza", extra: "23:30", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Albal (Valencia)", time: "Suelta en la plaza", extra: "23:59", image: "", region: "Este" },
-            { date: "2025-04-05", place: "Aguilar del Alfambra (Teruel)", time: "Calles y plaza", extra: "23:59", image: "", region: "Centro" },
-            // DIA 6 DE ABRIL
-            { date: "2025-04-06", place: "Albal (Valencia)", time: "Calles y plaza", extra: "13:00", image: "", region: "Este" },
-            { date: "2025-04-06", place: "Gátova (Valencia)", time: "Calles y plaza", extra: "16:30", image: "", region: "Este" },
-            { date: "2025-04-06", place: "Granada", time: "Novillada", extra: "17:30", image: "", region: "Sur" },
-            { date: "2025-04-06", place: "Albal (Valencia)", time: "Suelta en la plaza", extra: "17:30", image: "", region: "Este" },
-            { date: "2025-04-06", place: "Valladolid", time: "Recortes", extra: "17:30", image: "", region: "Oeste" },
-            { date: "2025-04-06", place: "Madrid", time: "Novillada", extra: "18:00", image: "", region: "Centro" },
-            { date: "2025-04-06", place: "Baeza (Jaén)", time: "Corrida de toros", extra: "18:00", image: "", region: "Sur" },
-            // DIA 11 DE ABRIL
-            { date: "2025-04-11", place: "Nules (Castellón)", time: "Calles y plaza", extra: "17:30", image: "", region: "Este" },
-            // DIA 12 DE ABRIL
-            { date: "2025-04-12", place: "Nules (Castellón)", time: "Calles y plaza", extra: "11:30", image: "", region: "Este" },
-            { date: "2025-04-12", place: "Benassal (Castellón)", time: "Calles y plaza", extra: "16:30", image: "", region: "Este" },
-            { date: "2025-04-12", place: "Nules (Castellón)", time: "Calles y plaza", extra: "17:00", image: "", region: "Este" },
-            { date: "2025-04-12", place: "Illescas (Toledo)", time: "Calles y plaza", extra: "17:30", image: "", region: "Centro" },
-            { date: "2025-04-12", place: "Brihuega (Guadalajara)", time: "Corrida de toros", extra: "17:30", image: "", region: "Centro" },
-            { date: "2025-04-12", place: "Benassal (Castellón)", time: "Calles y plaza", extra: "19:45", image: "", region: "Este" },
-            { date: "2025-04-12", place: "Nules (Castellón)", time: "Calles y plaza", extra: "20:00", image: "", region: "Este" },
-            { date: "2025-04-12", place: "Benassal (Castellón)", time: "Calles y plaza", extra: "22:30", image: "", region: "Este" },
-            { date: "2025-04-12", place: "Nules (Castellón)", time: "Calles y plaza", extra: "23:30", image: "", region: "Este" },
-            // DIA 13 DE ABRIL
-            { date: "2025-04-13", place: "Onda (Castellón)", time: "Suelta en la plaza", extra: "17:30", image: "", region: "Este" },
-            { date: "2025-04-13", place: "Mozoncillo", time: "Novillada", extra: "17:30", image: "", region: "Oeste" },
-            { date: "2025-04-13", place: "Madrid", time: "Corrida de toros", extra: "18:00", image: "", region: "Centro" },
-            { date: "2025-04-13", place: "Villaseca de la Sagra (Toledo)", time: "Novillada", extra: "18:00", image: "", region: "Centro" },
-            // DIA 18 DE ABRIL
-            { date: "2025-04-18", place: "Dos Aguas (Valencia)", time: "Encierro por las calles", extra: "08:00", image: "", region: "Este" },
-            { date: "2025-04-18", place: "Dos Aguas (Valencia)", time: "Calles y plaza", extra: "12:00", image: "", region: "Este" },
-            { date: "2025-04-18", place: "Aguilar del Alfambra (Teruel)", time: "Calles y plaza", extra: "17:30", image: "", region: "Centro" },
-            { date: "2025-04-18", place: "Dos Aguas (Valencia)", time: "Calles y plaza", extra: "18:00", image: "", region: "Este" },
-            { date: "2025-04-18", place: "Vistabella del Maestrat (Castellón)", time: "Calles y plaza", extra: "22:30", image: "", region: "Este" },
-            { date: "2025-04-18", place: "Dos Aguas (Valencia)", time: "Calles y plaza", extra: "23:00", image: "", region: "Este" },
-            { date: "2025-04-18", place: "Aguilar del Alfambra (Teruel)", time: "Calles y plaza", extra: "23:59", image: "", region: "Centro" },
-            // DIA 19 DE ABRIL
-            { date: "2025-04-19", place: "Dos Aguas (Valencia)", time: "Calles y plaza", extra: "12:00", image: "", region: "Este" },
-            { date: "2025-04-19", place: "Vistabella del Maestrat (Castellón)", time: "Calles y plaza", extra: "12:00", image: "", region: "Este" },
-            { date: "2025-04-19", place: "Vistabella del Maestrat (Castellón)", time: "Calles y plaza", extra: "17:00", image: "", region: "Este" },
-            { date: "2025-04-19", place: "Zaragoza", time: "Novillada", extra: "17:30", image: "", region: "Centro" },
-            { date: "2025-04-19", place: "Onda (Castellón)", time: "Suelta en la plaza", extra: "17:30", image: "", region: "Este" },
-            { date: "2025-04-19", place: "Iniesta (Cuenca)", time: "Corrida de toros", extra: "18:00", image: "", region: "Centro" },
-            { date: "2025-04-19", place: "Málaga", time: "Corrida de toros", extra: "18:00", image: "", region: "Centro" },
-            { date: "2025-04-19", place: "Dos Aguas (Valencia)", time: "Calles y plaza", extra: "18:00", image: "", region: "Este" },
-            { date: "2025-04-19", place: "Dos Aguas (Valencia)", time: "Calles y plaza", extra: "23:00", image: "", region: "Este" },
-            { date: "2025-04-19", place: "Vistabella del Maestrat (Castellón)", time: "Calles y plaza", extra: "23:00", image: "", region: "Este" },
-            { date: "2025-04-19", place: "Onda (Castellón)", time: "Suelta en la plaza", extra: "23:00", image: "", region: "Este" },
-            // DIA 20 DE ABRIL
-            { date: "2025-04-20", place: "Onda (Castellón)", time: "Suelta en la plaza", extra: "17:30", image: "", region: "Este" },
-            { date: "2025-04-20", place: "Zaragoza", time: "Corrida de toros", extra: "17:30", image: "", region: "Centro" },
-            { date: "2025-04-20", place: "Villarrobledo (Albacete)", time: "Corrida de toros", extra: "18:80", image: "", region: "Centro" },
-            { date: "2025-04-20", place: "Madrid", time: "Corrida de toros", extra: "18:00", image: "", region: "Centro" },
-            { date: "2025-04-20", place: "Villaseca de la Sagra (Toledo)", time: "Novillada", extra: "18:00", image: "", region: "Centro" },
-            // DIA 21 DE ABRIL
-            { date: "2025-04-21", place: "Onda (Castellón)", time: "Suelta en la plaza", extra: "17:30", image: "", region: "Este" },
-            // DIA 22 DE ABRIL
-            { date: "2025-04-22", place: "Zaragoza", time: "Novillada", extra: "17:30", image: "", region: "Centro" },
-            // DIA 23 DE ABRIL
-            { date: "2025-04-23", place: "Zaragoza", time: "Corrida de toros", extra: "17:30", image: "", region: "Centro" },
-            { date: "2025-04-23", place: "Teruel", time: "Recortes", extra: "17:30", image: "", region: "Centro" },
-            { date: "2025-04-23", place: "Onda (Castellón)", time: "Suelta en la plaza", extra: "18:00", image: "", region: "Este" },
-            // DIA 24 DE ABRIL
-            { date: "2025-04-24", place: "Onda (Castellón)", time: "Suelta en la plaza", extra: "18:00", image: "", region: "Este" },
-            // DIA 25 DE ABRIL
-            { date: "2025-04-25", place: "Onda (Castellón)", time: "Suelta en la plaza", extra: "18:00", image: "", region: "Este" },
-            { date: "2025-04-25", place: "Xert (Castellón)", time: "Calles y plaza", extra: "20:00", image: "", region: "Este" },
-            { date: "2025-04-25", place: "Xert (Castellón)", time: "Calles y plaza", extra: "22:00", image: "", region: "Este" },
-            { date: "2025-04-25", place: "Onda (Castellón)", time: "Suelta en la plaza", extra: "23:00", image: "", region: "Este" },
-            { date: "2025-04-25", place: "Monserrat (Valencia)", time: "Calles y plaza", extra: "23:59", image: "", region: "Este" },
-
+            { date: "2025-03-15", place: "VALENCIA", time: "Recortes", extra: "11:00", image: "Imagenes/SINFONDO.png", region: "Este" },
+            { date: "2025-03-15", place: "Casas de Lázaro (Albacete)", time: "Novillada", extra: "17:00", image: "Imagenes/SINFONDO.png", region: "Centro" },
+            { date: "2025-03-15", place: "Villaseca de la Sagra (Toledo)", time: "Corrida de toros", extra: "17:30", image: "Imagenes/SINFONDO.png", region: "Centro" },
+            { date: "2025-03-15", place: "VALENCIA", time: "Suelta en la plaza", extra: "22:00", image: "Imagenes/SINFONDO.png", region: "Este" }
         ];
 
         let date = new Date();
@@ -454,12 +360,12 @@
 
         function filterEvents(region, button) {
             if (activeButton) {
-                activeButton.classList.remove("active"); // Quita la clase active del botón anterior
+                activeButton.classList.remove("active");
             }
-            selectedRegion = selectedRegion === region ? null : region; // Alternar la selección
-            activeButton = selectedRegion === region ? button : null; // Actualizar el botón activo
+            selectedRegion = selectedRegion === region ? null : region;
+            activeButton = selectedRegion === region ? button : null;
             if (activeButton) {
-                activeButton.classList.add("active"); // Añade la clase active al botón seleccionado
+                activeButton.classList.add("active");
             }
             renderCalendar();
             showEvents(date.toISOString().split('T')[0]);
